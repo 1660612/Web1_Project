@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="./img/login.png">
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center margin-top-bottom">
@@ -17,10 +19,10 @@
                         ABC Shop Login Form
                     </h4>
                 </div>
-                <form action="./index.php" autocomplete="off" action="GET">
+                <form action="./index.php" autocomplete="off" method="POST">
                     <div class="row form-group">
                         <label class="col-sm-4" for="user_name">User name<i class="text-danger">*</i></label>
-                        <input type="text" class="form-control col-sm-8" name="user_name" placeholder="Enter your user name or email..." autocomplete="off" required/>
+                        <input type="text" class="form-control col-sm-8" name="user_name" placeholder="Enter your user name or email..." autocomplete="off"/>
                     </div>
                     <div class="row form-group">
                         <label class="col-sm-4" for="password">Password<i class="text-danger">*</i></label>
@@ -28,18 +30,12 @@
                     </div>
                     <div class="text-center">
                         <input type="submit" value="Login" class="btn btn-primary" />
-                        <input type="submit" value="Register" class="btn btn-success" />
+                        <!-- <input type="submit" value="Register" class="btn btn-success" /> -->
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    
-
-
-
-
-    
     <script src="./bootstrap/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="./bootstrap/assets/js/vendor/popper.min.js"></script>
     <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
