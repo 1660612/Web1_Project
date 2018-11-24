@@ -1,3 +1,11 @@
+<?php
+    include_once("../../lib/DataProvider.php");
+    session_start();
+    if(isset($_SESSION['user_name']))
+    {
+        DataProvider::is_admin();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

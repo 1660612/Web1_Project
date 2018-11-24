@@ -1,5 +1,12 @@
 <?php
     include_once("lib/DataProvider.php");
+    include_once("controllers/users/sessions_controller.php");
+    if(isset($_SESSION['user_name']) == false)
+    {
+        header("refresh:0, url='./views/users/login.php'");
+    }
+    else
+    {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,38 +18,7 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css" /> 
 </head>
 <body>
-    <div id="container">
-        <div id="header">
-            <?php include("modules/mHeader.php");?>
-        </div>
-        <div id="nav">
-            <?php include("modules/mMenu.php"); ?>
-        </div>
-        <div id="content">
-            <?php
-                $a=1;
-                if(isset($_GET["a"])){
-                    $a = $_GET["a"];
-                }
-                switch ($a) {
-                    case 1:
-                        include("pages/pIndex.php");
-                        break;
-                    case 2:
-                        include("pages/pListOfProduct.php");
-                        break;
-                    case 3:
-                        include("pages/pProductDetail.php");
-                        break;
-                    default:
-                        include("pages/pError.php");
-                        break;
-                }
-            ?>
-        </div>
-        <div id="footer">
-                <?php include("modules/mFooter.php") ?>
-        </div>
-    </div>
+    Buon ban san pham
 </body>
 </html>
+<?php } ?>
