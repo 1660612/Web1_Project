@@ -1,12 +1,12 @@
 <?php
-    include("../../../controllers/users/sessions_controller.php");
-    include("../../../lib/DataProvider.php");
+    include("../controllers/users/sessions_controller.php");
+    include("../lib/DataProvider.php");
     if(isset($_POST['user_name']) && isset($_POST['password']))
     {
         $_SESSION["user_name"] = $_POST['user_name'];
         $_SESSION["password"] = $_POST['password'];
     }
-
+    $title = "Admin Page";
 ?>
 
 <?php
@@ -30,15 +30,39 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Admin Page</title>
-            <link rel="stylesheet" href="../../../css/style.css" />
+            <title><?php echo $title; ?></title>
+            <link rel="stylesheet" href="../css/style.css" />
         </head>
         <body>
             <?php
             include_once("./layouts/header.php");
             ?>
+
             <?php
                 include_once("./layouts/menu.php");
+            ?>
+            
+            <?php
+                if(isset($_GET['a']))
+                {
+                    $a = $_GET['a'];
+                    if($a == 1)
+                    {
+                        include_once("./pages/products.php");
+                    }
+                    else if($a == 3)
+                    {
+                        include_once("./pages/users.php");
+                    }
+                    else if($a == 4)
+                    {
+                        include_once("./pages/invoices.php");
+                    }
+                }
+            ?>
+
+            <?php
+                include_once("./layouts/footer.php");
             ?>
         </body>
         </html>

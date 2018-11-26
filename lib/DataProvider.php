@@ -17,8 +17,10 @@
         }
         public static function is_admin()
         {
-            $result = self::ExecuteQuery("select taikhoan.*, loaitaikhoan.* from taikhoan, loaitaikhoan where taikhoan.MaLoaiTaiKhoan = loaitaikhoan.MaLoaiTaiKhoan and loaitaikhoan.TenLoaiTaiKhoan = 'Admin' and taikhoan.TenDangNhap = '".$_SESSION['user_name']."'");
-
+            $result = self::ExecuteQuery("select taikhoan.*, loaitaikhoan.* from taikhoan, loaitaikhoan 
+                                        where taikhoan.MaLoaiTaiKhoan = loaitaikhoan.MaLoaiTaiKhoan and 
+                                        loaitaikhoan.TenLoaiTaiKhoan = 'Admin' and 
+                                        taikhoan.TenDangNhap = '".$_SESSION['user_name']."'");
 
             if(empty($result) == false)
             {
@@ -30,11 +32,12 @@
                     {
                         if($TenLoaiTaiKhoan == "Admin")
                         {
-                            header("refresh:0; url=../users/admin/aIndex.php");
+                            return true;
                         }
                     }
                 }
             }
+            return false;
         }
     }
 ?>

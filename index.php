@@ -1,13 +1,3 @@
-<?php
-    include_once("lib/DataProvider.php");
-    include_once("controllers/users/sessions_controller.php");
-    if(isset($_SESSION['user_name']) == false)
-    {
-        header("refresh:0, url='./views/users/login.php'");
-    }
-    else
-    {
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +9,6 @@
 </head>
 <body>
     Buon ban san pham
+    <a href="./logout.php">Log out</a>
 </body>
 </html>
-<?php } ?>

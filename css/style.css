@@ -1,7 +1,15 @@
 #admin_menu{
     height: 1000px;
-    width: 250px;
+    width: 15%;
     background-color: #343a40;
+    color:#FFF;
+    float: left;
+}
+#admin_footer{
+    clear: both;
+    height: 70px;
+    width: 100%;
+    background-color: #17a2b8;
 }
 body{
     margin: 0px;
@@ -20,7 +28,6 @@ body{
 .float-right.text-white{
     line-height: 70px;
     margin-right: 50px;
-    width: 96px;
 }
 .float-right.text-white::after {
     display: inline-block;
@@ -54,6 +61,7 @@ body{
     background-color: #343a40;
     z-index: 1;
     margin-top: 50px;
+    right: 50px;
 }
 
 .dropdown-content a {
@@ -67,4 +75,30 @@ body{
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+ul{
+    margin-block-start: 0;
+    list-style-type: none;
+}
+ul li{
+    height: 40px;
+    line-height: 40px;
+}
+ul li a{
+    text-decoration: none;
+    color:#FFF;
+    display: inline-block;
+    width: 100%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.lh-70{
+    line-height: 70px;
+}
+
+.text-xs {
+    font-size: 13px;
 }
