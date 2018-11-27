@@ -4,17 +4,13 @@
         public static function ExecuteQuery($query)
         {
             $con = mysqli_connect("localhost", "root", "", "1660612_quanlysanpham") or die ("Cannot connect DB");
-            mysqli_query($con, "set name 'utf8'");
+            mysqli_set_charset($con,"utf8");
 
             $result = mysqli_query($con, $query);
             mysqli_close($con);
             return $result;
         }
-        public static function index_action($model_name)
-        {
-            $query = "select * from $model_name";
-            return self::ExecuteQuery($query);
-        }
+
         public static function is_admin()
         {
             $result = self::ExecuteQuery("select taikhoan.*, loaitaikhoan.* from taikhoan, loaitaikhoan 
@@ -39,5 +35,21 @@
             }
             return false;
         }
+
+        public static function getAll($model_name)
+        {
+            $query = "select * from $model_name";
+            $result = self::ExecuteQuery($query);
+            return $result;
+        }
+
+//        public static function full_name($id)
+//        {
+//            $query = "select * from TaiKhoan where MaTaiKhoan = $id";
+//            $result = self::ExecuteQuery($query);
+//            $full_name = mysqli_fetch_array($result);
+//            extract($full_name);
+//            return $Ten
+//        }
     }
 ?>

@@ -32,6 +32,8 @@
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title><?php echo $title; ?></title>
             <link rel="stylesheet" href="../css/style.css" />
+            <script src="../js/javascript.js"></script>
+            <link rel="icon" type="image/png" href="../img/admin.png" />
         </head>
         <body>
             <?php
@@ -41,25 +43,31 @@
             <?php
                 include_once("./layouts/menu.php");
             ?>
-            
-            <?php
-                if(isset($_GET['a']))
-                {
-                    $a = $_GET['a'];
-                    if($a == 1)
+
+            <div id="admin_content">
+                <?php
+                    include_once("./layouts/sub-header.php");
+                ?>
+
+                <?php
+                    if(isset($_GET['a']))
                     {
-                        include_once("./pages/products.php");
+                        $a = $_GET['a'];
+                        if($a == 1)
+                        {
+                            include_once("./pages/products.php");
+                        }
+                        else if($a == 2)
+                        {
+                            include_once("./pages/users.php");
+                        }
+                        else if($a == 3)
+                        {
+                            include_once("./pages/invoices.php");
+                        }
                     }
-                    else if($a == 3)
-                    {
-                        include_once("./pages/users.php");
-                    }
-                    else if($a == 4)
-                    {
-                        include_once("./pages/invoices.php");
-                    }
-                }
-            ?>
+                ?>
+            </div>
 
             <?php
                 include_once("./layouts/footer.php");
