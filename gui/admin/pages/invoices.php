@@ -39,4 +39,5 @@ $result = DataProvider::getAll("DonDatHang");
 </table>
 <script>
     header_change("Đơn hàng", "./index.php?a=3");
+    document.getElementById("invoice_link").setAttribute("style", "background-color: #b3c734;");
 </script>

@@ -1,16 +1,11 @@
 <?php
     include("../controllers/users/sessions_controller.php");
     include("../lib/DataProvider.php");
-    if(isset($_POST['user_name']) && isset($_POST['password']))
-    {
-        $_SESSION["user_name"] = $_POST['user_name'];
-        $_SESSION["password"] = $_POST['password'];
-    }
     $title = "Admin Page";
 ?>
 
 <?php
-    if(!isset($_SESSION["user_name"]))
+    if(!isset($_SESSION["user_name"]) || DataProvider::is_admin() == false)
     {
         header("Refresh:0; url=../login.php");
     }

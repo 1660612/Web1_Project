@@ -39,4 +39,5 @@
 </table>
 <script>
     header_change("Sản phẩm", "./index.php?a=1");
+    document.getElementById("product_link").setAttribute("style", "background-color: #b3c734;");
 </script>

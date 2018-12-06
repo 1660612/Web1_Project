@@ -41,4 +41,5 @@
 </table>
 <script>
     header_change("Tài khoản", "./index.php?a=2");
+    document.getElementById("user_link").setAttribute("style", "background-color: #b3c734;");
 </script>
