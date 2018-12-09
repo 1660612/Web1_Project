@@ -1,5 +1,5 @@
 <?php
-$result = DataProvider::getAll("DonDatHang");
+$invoices = (new InvoiceBUS)->GetAll();
 ?>
 
 <h2 class="text-center">Danh sách các đơn hàng</h2>
@@ -9,29 +9,29 @@ $result = DataProvider::getAll("DonDatHang");
         <th>Ngày lập</th>
         <th>Tổng thành tiền</th>
         <th>Tài khoản</th>
-        <th>Tình trạng</th>
     </tr>
     </thead>
     <tbody>
 
     <?php
-    if($result->num_rows == 0)
+    if(count($invoices) == 0)
     {
         echo "<td colspan='4'>Không có đơn hàng nào để hiển thị</td>";
     }
 
     else
     {
-        while($list = mysqli_fetch_array($result))
+        foreach($invoices as $invoice)
         {
-            extract($list);
-
             ?>
             <tr>
-                <td><?php echo $NgayLap; ?></td>
-                <td><?php echo $TongThanhTien; ?></td>
-                <td><?php echo $MaTaiKhoan; ?></td>
-                <td><?php echo $MaTinhTrang; ?></td>
+                <?php  ?>
+                <td>
+                    <?php $date = new DateTime($invoice->created_date);
+                    echo $date->format('Y-m-d'); ?>
+                </td>
+                <td><?php echo $invoice->total_price; ?></td>
+                <td><?php echo $invoice->user_id; ?></td>
             </tr>
         <?php }}
     ?>

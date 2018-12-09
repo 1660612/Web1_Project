@@ -10,7 +10,7 @@ class UserDAO extends DB
 {
     public function GetAll()
     {
-        $sql = "select id, username, avatar, fullname, address, phone_number, email, role_id from users";
+        $sql = "select id, username, password, avatar, full_name, address, phone_number, email, role_id from users";
         $result = $this->ExecuteQuery($sql);
         $users = array();
         while($row=mysqli_fetch_array($result))
@@ -20,8 +20,9 @@ class UserDAO extends DB
             $user = new User();
             $user->id = $id;
             $user->username = $username;
+            $user->password = $password;
             $user->avatar = $avatar;
-            $user->fullname = $fullname;
+            $user->full_name = $full_name;
             $user->address = $address;
             $user->phone_number = $phone_number;
             $user->email = $email;
@@ -34,7 +35,7 @@ class UserDAO extends DB
 
     public function GetByID($user_id)
     {
-        $sql = "select id, username, avatar, fullname, address, phone_number, email, role_id from users WHERE id = $user_id";
+        $sql = "select id, username, avatar, full_name, address, phone_number, email, role_id from users WHERE id = $user_id";
         $result = $this->ExecuteQuery($sql);
         $row=mysqli_fetch_array($result);
         extract($row);
@@ -42,7 +43,7 @@ class UserDAO extends DB
         $user->id = $id;
         $user->username = $username;
         $user->avatar = $avatar;
-        $user->fullname = $fullname;
+        $user->full_name = $full_name;
         $user->address = $address;
         $user->phone_number = $phone_number;
         $user->email = $email;
@@ -52,8 +53,8 @@ class UserDAO extends DB
 
     public function Insert($user)
     {
-        $sql = "INSERT INTO users(username, password, avatar, fullname, address, phone_number, email, role_id) 
-                VALUES ('$user->username','$user->password','$user->avatar','$user->fullname', '$user->address', 
+        $sql = "INSERT INTO users(username, password, avatar, full_name, address, phone_number, email, role_id) 
+                VALUES ('$user->username','$user->password','$user->avatar','$user->full_name', '$user->address', 
                         '$user->phone_number','$user->email',$user->role_id)";
         $this->ExecuteQuery($sql);
     }
@@ -66,10 +67,36 @@ class UserDAO extends DB
 
     public function Update($user)
     {
-        $sql = "UPDATE users SET password = '$user->password', fullname = '$user->fullname', address = '$user->address', 
-                phone_number = '$user->phone_number', email = '$user->email', role_id = $user->role_id
-                WHERE id = $user->id";
-        $this->ExecuteQuery($sql);
+        if($user->password != '' && $user->password != null)
+        {
+            $sql = "UPDATE users SET password = '$user->password' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($user->full_name != '' && $user->full_name != null)
+        {
+            $sql = "UPDATE users SET full_name = '$user->full_name' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($user->address != '' && $user->address != null)
+        {
+            $sql = "UPDATE users SET address = '$user->address' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($user->phone_number != '' && $user->phone_number != null)
+        {
+            $sql = "UPDATE users SET phone_number = '$user->phone_number' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($user->email != '' && $user->email != null)
+        {
+            $sql = "UPDATE users SET email = '$user->email' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($user->role_id != '' && $user->role_id != null)
+        {
+            $sql = "UPDATE users SET role_id = $user->role_id WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
     }
 
     public static function is_admin($user_id)

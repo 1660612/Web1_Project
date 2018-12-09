@@ -1,23 +1,26 @@
 <?php
-    include("../controllers/users/sessions_controller.php");
-    include("../lib/DataProvider.php");
-    $title = "Admin Page";
+session_start();
+$title = "Admin Page";
+foreach(glob("../../DAO/*.php") as $filename)
+{
+    include $filename;
+}
+foreach(glob("../../DTO/*.php") as $filename)
+{
+    include $filename;
+}
+foreach(glob("../../BUS/*.php") as $filename)
+{
+    include $filename;
+}
+
 ?>
 
 <?php
-    if(!isset($_SESSION["user_name"]) || DataProvider::is_admin() == false)
+    if(!isset($_SESSION["current_user_id"]) || UserDAO::is_admin($_SESSION['current_user_id']) == false)
     {
         header("Refresh:0; url=../login.php");
     }
-    else {
-        $user = $_SESSION['user_name'];
-        $pass = $_SESSION['password'];
-        $result = DataProvider::ExecuteQuery("select * from TaiKhoan where TenDangNhap = '$user' and MatKhau = '$pass'");
-        $check = mysqli_fetch_array($result);
-        if(!isset($check))
-        {
-            header("Refresh:0; url=../login.php");
-        }
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -32,7 +35,7 @@
         </head>
         <body>
             <?php
-            include_once("./layouts/header.php");
+                include_once("./layouts/header.php");
             ?>
 
             <?php
@@ -69,6 +72,3 @@
             ?>
         </body>
         </html>
-        <?php
-    }
-?>

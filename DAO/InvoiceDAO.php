@@ -19,9 +19,9 @@ class InvoiceDAO extends DB
 
             $invoice = new Invoice();
             $invoice->id = $id;
-            $invoice->username = $created_date;
-            $invoice->avatar = $total_price;
-            $invoice->fullname = $user_id;
+            $invoice->created_date = $created_date;
+            $invoice->total_price = $total_price;
+            $invoice->user_id = $user_id;
             $invoices[] = $invoice;
         }
 

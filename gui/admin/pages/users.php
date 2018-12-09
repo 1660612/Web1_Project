@@ -1,5 +1,5 @@
 <?php
-    $result = DataProvider::getAll("TaiKhoan");
+    $users = (new UserBUS())->GetAll();
 ?>
 
 <h2 class="text-center">Danh sách các tài khoản</h2>
@@ -16,24 +16,23 @@
     <tbody>
 
             <?php
-                if($result->num_rows == 0)
+                if(count($users) == 0)
                 {
                     echo "<td colspan='5'>Không có tài khoản để hiển thị</td>";
                 }
 
                 else
                 {
-                    while($list = mysqli_fetch_array($result))
+                    foreach($users as $user)
                     {
-                        extract($list);
 
                     ?>
             <tr>
-            <td><?php echo $TenDangNhap; ?></td>
-            <td><?php echo $TenHienThi; ?></td>
-            <td><?php echo $DiaChi; ?></td>
-            <td><?php echo $DienThoai; ?></td>
-            <td><?php echo $Email; ?></td>
+            <td><?php echo $user->username; ?></td>
+            <td><?php echo $user->full_name; ?></td>
+            <td><?php echo $user->address; ?></td>
+            <td><?php echo $user->phone_number; ?></td>
+            <td><?php echo $user->email; ?></td>
             </tr>
             <?php }}
                 ?>

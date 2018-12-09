@@ -3,8 +3,8 @@
     <div class="dropdown float-right">
         <button class="float-right text-white dropbtn">
             <?php
-                extract($check);
-                echo $TenHienThi;
+                $current_user = (new UserBUS())->GetByID($_SESSION["current_user_id"]);
+                echo $current_user->full_name;
             ?>
         </button>
         <div class="dropdown-content">

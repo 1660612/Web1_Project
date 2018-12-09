@@ -57,7 +57,25 @@ class ShoppingCartDAO extends DB
 
     public function Update($shopping_cart)
     {
-        $sql = "UPDATE shopping_carts SET product_id = $shopping_cart->product_id, amount = $shopping_cart->amount, total_price = $shopping_cart->total_price WHERE id = $shopping_cart->id";
-        $this->ExecuteQuery($sql);
+        if($shopping_cart->product_id != '' && $shopping_cart->product_id != null)
+        {
+            $sql = "UPDATE shopping_carts SET product_id = $shopping_cart->product_id WHERE id = $shopping_cart->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($shopping_cart->amount != '' && $shopping_cart->amount != null)
+        {
+            $sql = "UPDATE shopping_carts SET amount = $shopping_cart->amount WHERE id = $shopping_cart->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($shopping_cart->amount != '' && $shopping_cart->amount != null)
+        {
+            $sql = "UPDATE shopping_carts SET amount = $shopping_cart->amount WHERE id = $shopping_cart->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($shopping_cart->total_price != '' && $shopping_cart->total_price != null)
+        {
+            $sql = "UPDATE shopping_carts SET total_price = $shopping_cart->total_price WHERE id = $shopping_cart->id";
+            $this->ExecuteQuery($sql);
+        }
     }
 }

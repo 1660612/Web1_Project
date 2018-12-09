@@ -5,15 +5,15 @@
  * Date: 12/9/2018
  * Time: 4:48 PM
  */
-foreach(glob("DAO/*.php") as $filename)
+foreach(glob("../DAO/*.php") as $filename)
 {
     include $filename;
 }
-foreach(glob("DTO/*.php") as $filename)
+foreach(glob("../DTO/*.php") as $filename)
 {
     include $filename;
 }
-foreach(glob("BUS/*.php") as $filename)
+foreach(glob("../BUS/*.php") as $filename)
 {
     include $filename;
 }
@@ -22,12 +22,21 @@ foreach(glob("BUS/*.php") as $filename)
     session_start();
     if(isset($_POST['user_name']) && isset($_POST['password']))
     {
-        $_SESSION["user_name"] = $_POST['user_name'];
-        $_SESSION["password"] = $_POST['password'];
+        $user = new UserBUS();
+        $users = $user->GetAll();
+
+        foreach($users as $user_check_login)
+        {
+            if($user_check_login->username == $_POST['user_name']
+                && $user_check_login->password == $_POST['password'])
+            {
+                $_SESSION['current_user_id'] = $user_check_login->id;
+            }
+        }
     }
-    if(isset($_SESSION['user_name']))
+    if(isset($_SESSION['current_user_id']))
     {
-        $is_admin = User::is_admin();
+        $is_admin = UserDAO::is_admin($_SESSION['current_user_id']);
         if($is_admin == true)
         {
             header("refresh:0; url=./admin/index.php");

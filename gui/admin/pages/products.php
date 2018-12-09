@@ -1,5 +1,5 @@
 <?php
-    $result = DataProvider::getAll("SanPham");
+    $products = (new ProductBUS())->GetAll();
 ?>
 <h2 class="text-center">Danh sách các sản phẩm</h2>
 <table>
@@ -15,22 +15,21 @@
     <tbody>
 
             <?php
-            if($result->num_rows == 0)
+            if(count($products) == 0)
             {
                 echo "<td colspan='5' class='text-center'>Hiện không có sản phẩm nào</td>";
             }
             else
             {
-            while($list = mysqli_fetch_array($result))
+            foreach($products as $product)
             {
-                extract($list);
             ?>
                 <tr>
-                    <td><a href="./index.php?a=1&id=<?php echo $MaSanPham; ?>"><?php echo $TenSanPham; ?></a></td>
-                    <td id="money"><?php echo $GiaSanPham; ?></td>
-                    <td><?php echo $MoTa; ?></td>
-                    <td><?php echo $MaLoaiSanPham; ?></td>
-                    <td><?php echo $MaHangSanXuat; ?></td>
+                    <td><a href="./index.php?a=1&id=<?php echo $product->id; ?>"><?php echo $product->name; ?></a></td>
+                    <td id="money"><?php echo $product->price; ?></td>
+                    <td><?php echo $product->description; ?></td>
+                    <td><?php echo $product->product_type; ?></td>
+                    <td><?php echo $product->manufacturer_id; ?></td>
                 </tr>
             <?php } } ?>
 

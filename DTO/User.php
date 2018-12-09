@@ -12,7 +12,7 @@ class User
     var $username;
     var $password;
     var $avatar;
-    var $fullname;
+    var $full_name;
     var $address;
     var $phone_number;
     var $email;
@@ -24,7 +24,7 @@ class User
         $this->username = "";
         $this->password = "";
         $this->avatar = "";
-        $this->fullname = "";
+        $this->full_name = "";
         $this->address = "";
         $this->phone_number = "";
         $this->email = "";
