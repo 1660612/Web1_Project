@@ -59,7 +59,7 @@ class ManufacturerDAO extends DB
 
     public function Update($manufacturer)
     {
-        $sql = "UPDATE manufacturers SET name = '$manufacturer->name', price = $manufacturer->price, phone_number = $manufacturer->phone_number, address = $manufacturer->address, logo = $manufacturer->logo WHERE id = $manufacturer->id";
+        $sql = "UPDATE manufacturers SET name = '$manufacturer->name', price = $manufacturer->price, phone_number = '$manufacturer->phone_number', address = '$manufacturer->address', logo = '$manufacturer->logo' WHERE id = $manufacturer->id";
         $this->ExecuteQuery($sql);
     }
 }

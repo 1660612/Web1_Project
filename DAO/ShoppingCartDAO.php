@@ -11,7 +11,7 @@ class ShoppingCartDAO extends DB
 
     public function GetAll()
     {
-        $sql = "select id, product_id, amount, total_price from roles";
+        $sql = "select id, product_id, amount, total_price from shopping_carts";
         $result = $this->ExecuteQuery($sql);
         $shopping_carts = array();
         while($row=mysqli_fetch_array($result))

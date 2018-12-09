@@ -51,13 +51,13 @@ class InvoiceDAO extends DB
 
     public function Delete($invoice)
     {
-        $sql = "DELETE FROM Invoice WHERE id = $invoice->id";
+        $sql = "DELETE FROM invoices WHERE id = $invoice->id";
         $this->ExecuteQuery($sql);
     }
 
     public function Update($invoice)
     {
-        $sql = "UPDATE Invoice SET created_date = '$invoice->created_date', total_price = $invoice->total_price, user_id = $invoice->user_id
+        $sql = "UPDATE invoices SET created_date = '$invoice->created_date', total_price = $invoice->total_price, user_id = $invoice->user_id
                 WHERE id = $invoice->id";
         $this->ExecuteQuery($sql);
     }

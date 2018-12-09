@@ -66,7 +66,7 @@ class UserDAO extends DB
 
     public function Update($user)
     {
-        $sql = "UPDATE User SET password = '$user->password', fullname = '$user->fullname', address = '$user->address', 
+        $sql = "UPDATE users SET password = '$user->password', fullname = '$user->fullname', address = '$user->address', 
                 phone_number = '$user->phone_number', email = '$user->email', role_id = $user->role_id
                 WHERE id = $user->id";
         $this->ExecuteQuery($sql);
