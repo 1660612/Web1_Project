@@ -30,24 +30,15 @@ class InvoiceBUS
         $this->invoiceDAO->Insert($invoice);
     }
 
-    public function InsertWithName($tenLoaiSanPham)
+    public function Delete($invoice_id)
     {
-        $loaiSanPham = new ProductTypeDAO();
-        $loaiSanPham->TenLoaiSanPham = $tenLoaiSanPham;
-        $this->loaiSanPhamDAO->Insert($loaiSanPham);
+        $invoice = new Invoice();
+        $invoice->id = $invoice_id;
+        $this->invoiceDAO->Delete($invoice);
     }
 
-    public function Delete($maLoaiSanPham)
+    public function Update($invoice)
     {
-        $loaiSanPham = new ProductTypeDAO();
-        $loaiSanPham->MaLoaiSanPham = $maLoaiSanPham;
-        $this->loaiSanPhamDAO->Delete($loaiSanPham);
-    }
-
-    public function Update($tenLoaiSanPham)
-    {
-        $loaiSanPham = new ProductTypeDAO();
-        $loaiSanPham->TenLoaiSanPham = $tenLoaiSanPham;
-        $this->loaiSanPhamDAO->Update($loaiSanPham);
+        $this->loaiSanPhamDAO->Update($invoice);
     }
 }

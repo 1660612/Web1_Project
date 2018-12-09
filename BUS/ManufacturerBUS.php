@@ -8,58 +8,37 @@
 
 class ManufacturerBUS
 {
+    var $manufacturerDAO;
+
+    public function __construct()
+    {
+        $this->manufacturerDAO = new ManufacturerDAO();
+    }
 
     public function GetAll()
     {
-        $sql = "select id, name, phone_number, address, logo from manufacturers";
-        $result = $this->ExecuteQuery($sql);
-        $manufacturers = array();
-        while($row=mysqli_fetch_array($result))
-        {
-            extract($row);
-
-            $manufacturer = new Manufacturer();
-            $manufacturer->id = $id;
-            $manufacturer->name = $name;
-            $manufacturer->phone_number = $phone_number;
-            $manufacturer->address = $address;
-            $manufacturer->logo = $logo;
-            $manufacturers[] = $manufacturer;
-        }
-
-        return $manufacturers;
+        return $this->manufacturerDAO->GetAll();
     }
 
     public function GetByID($manufacturer_id)
     {
-        $sql = "select id, name, phone_number, address, logo from manufacturers WHERE id = $manufacturer_id";
-        $result = $this->ExecuteQuery($sql);
-        $row=mysqli_fetch_array($result);
-        extract($row);
-        $manufacturer = new Manufacturer();
-        $manufacturer->id = $id;
-        $manufacturer->name = $name;
-        $manufacturer->phone_number = $phone_number;
-        $manufacturer->address = $address;
-        $manufacturer->logo = $logo;
-        return $manufacturer;
+        return $this->manufacturerDAO->GetByID($manufacturer_id);
     }
 
     public function Insert($manufacturer)
     {
-        $sql = "INSERT INTO manufacturers(name, phone_number, address, logo) VALUES ('$manufacturer->name','$manufacturer->phone_number','$manufacturer->address','$manufacturer->logo')";
-        $this->ExecuteQuery($sql);
+        $this->manufacturerDAO->Insert($manufacturer);
     }
 
-    public function Delete($manufacturer)
+    public function Delete($manufacturer_id)
     {
-        $sql = "DELETE FROM manufacturers WHERE id = $manufacturer->id";
-        $this->ExecuteQuery($sql);
+        $manufacturer = new Manufacturer();
+        $manufacturer->id = $manufacturer_id;
+        $this->manufacturerDAO->Delete($manufacturer);
     }
 
     public function Update($manufacturer)
     {
-        $sql = "UPDATE manufacturers SET name = '$manufacturer->name', price = $manufacturer->price, phone_number = $manufacturer->phone_number, address = $manufacturer->address, logo = $manufacturer->logo WHERE id = $manufacturer->id";
-        $this->ExecuteQuery($sql);
+        $this->manufacturerDAO->Update($manufacturer);
     }
 }

@@ -8,67 +8,37 @@
 
 class UserBUS
 {
+    var $userDAO;
+
+    public function __construct()
+    {
+        $this->userDAO = new UserDAO();
+    }
+
     public function GetAll()
     {
-        $sql = "select id, username, avatar, fullname, address, phone_number, email, role_id from users";
-        $result = $this->ExecuteQuery($sql);
-        $users = array();
-        while($row=mysqli_fetch_array($result))
-        {
-            extract($row);
-
-            $user = new User();
-            $user->id = $id;
-            $user->username = $username;
-            $user->avatar = $avatar;
-            $user->fullname = $fullname;
-            $user->address = $address;
-            $user->phone_number = $phone_number;
-            $user->email = $email;
-            $user->role_id = $role_id;
-            $users[] = $user;
-        }
-
-        return $users;
+        return $this->userDAO->GetAll();
     }
 
     public function GetByID($user_id)
     {
-        $sql = "select id, username, avatar, fullname, address, phone_number, email, role_id from users WHERE id = $user_id";
-        $result = $this->ExecuteQuery($sql);
-        $row=mysqli_fetch_array($result);
-        extract($row);
-        $user = new User();
-        $user->id = $id;
-        $user->username = $username;
-        $user->avatar = $avatar;
-        $user->fullname = $fullname;
-        $user->address = $address;
-        $user->phone_number = $phone_number;
-        $user->email = $email;
-        $user->role_id = $role_id;
-        return $user;
+        return $this->userDAO->GetByID($user_id);
     }
 
     public function Insert($user)
     {
-        $sql = "INSERT INTO users(username, password, avatar, fullname, address, phone_number, email, role_id) 
-                VALUES ('$user->username','$user->password','$user->avatar','$user->fullname', '$user->address', 
-                        '$user->phone_number','$user->email',$user->role_id)";
-        $this->ExecuteQuery($sql);
+        $this->userDAO->Insert($user);
     }
 
-    public function Delete($user)
+    public function Delete($user_id)
     {
-        $sql = "DELETE FROM users WHERE id = $user->id";
-        $this->ExecuteQuery($sql);
+        $user = new User();
+        $user->id = $user_id;
+        $this->userDAO->Delete($user);
     }
 
     public function Update($user)
     {
-        $sql = "UPDATE User SET password = '$user->password', fullname = '$user->fullname', address = '$user->address', 
-                phone_number = '$user->phone_number', email = '$user->email', role_id = $user->role_id
-                WHERE id = $user->id";
-        $this->ExecuteQuery($sql);
+        $this->userDAO->Update($user);
     }
 }

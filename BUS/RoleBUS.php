@@ -8,51 +8,37 @@
 
 class RoleBUS
 {
+    var $roleDAO;
+
+    public function __construct()
+    {
+        $this->roleDAO = new RoleDAO();
+    }
+
     public function GetAll()
     {
-        $sql = "select id, name from roles";
-        $result = $this->ExecuteQuery($sql);
-        $roles = array();
-        while($row=mysqli_fetch_array($result))
-        {
-            extract($row);
-
-            $role = new Role();
-            $role->id = $id;
-            $role->name = $name;
-            $roles[] = $role;
-        }
-
-        return $roles;
+        return $this->roleDAO->GetAll();
     }
 
     public function GetByID($role_id)
     {
-        $sql = "select id, name from roles WHERE id = $role_id";
-        $result = $this->ExecuteQuery($sql);
-        $row=mysqli_fetch_array($result);
-        extract($row);
-        $role = new Role();
-        $role->id = $id;
-        $role->name = $name;
-        return $role;
+        return $this->roleDAO->GetByID($role_id);
     }
 
     public function Insert($role)
     {
-        $sql = "INSERT INTO roles(name) VALUES ('$role->name')";
-        $this->ExecuteQuery($sql);
+        $this->roleDAO->Insert($role);
     }
 
-    public function Delete($role)
+    public function Delete($role_id)
     {
-        $sql = "DELETE FROM roles WHERE id = $role->id";
-        $this->ExecuteQuery($sql);
+        $role = new Role();
+        $role->id = $role_id;
+        $this->roleDAO->Delete($role);
     }
 
     public function Update($role)
     {
-        $sql = "UPDATE roles SET name = '$role->name' WHERE id = $role->id";
-        $this->ExecuteQuery($sql);
+        $this->roleDAO->Update($role);
     }
 }
