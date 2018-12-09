@@ -12,3 +12,27 @@ function header_change(data, page)
     para.setAttribute("id","sub_title");
     h.parentNode.insertBefore(para, h.nextSibling);
 }
+
+function Load() {
+    var modal = document.getElementById('myModal');
+
+    var span = document.getElementsByClassName("close")[0];
+    var not_agree = document.getElementById('not_agree');
+
+        modal.style.display = "block";
+
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    not_agree.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "block";
+        }
+    }
+}

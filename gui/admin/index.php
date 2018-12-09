@@ -21,54 +21,60 @@ foreach(glob("../../BUS/*.php") as $filename)
     {
         header("Refresh:0; url=../login.php");
     }
+    ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title><?php echo $title; ?></title>
+        <link rel="stylesheet" href="../css/style.css" />
+        <script src="../js/javascript.js"></script>
+        <link rel="icon" type="image/png" href="../img/admin.png" />
+    </head>
+    <body>
+        <?php
+            include_once("./layouts/header.php");
         ?>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title><?php echo $title; ?></title>
-            <link rel="stylesheet" href="../css/style.css" />
-            <script src="../js/javascript.js"></script>
-            <link rel="icon" type="image/png" href="../img/admin.png" />
-        </head>
-        <body>
+
+        <?php
+            include_once("./layouts/menu.php");
+        ?>
+
+        <div id="admin_content">
             <?php
-                include_once("./layouts/header.php");
+                include_once("./layouts/sub-header.php");
             ?>
 
             <?php
-                include_once("./layouts/menu.php");
+                $a = 0;
+                if(isset($_GET['a']))
+                {
+                    $a = $_GET['a'];
+                }
+            if($a == 0)
+            {
+                include_once("./pages/dashboard.php");
+            }
+            else if($a == 1)
+            {
+                include_once("./pages/products.php");
+            }
+            else if($a == 2)
+            {
+                include_once("./pages/users.php");
+            }
+            else if($a == 3)
+            {
+                include_once("./pages/invoices.php");
+            }
             ?>
+        </div>
 
-            <div id="admin_content">
-                <?php
-                    include_once("./layouts/sub-header.php");
-                ?>
+        <?php
+            include_once("./layouts/footer.php");
+        ?>
 
-                <?php
-                    if(isset($_GET['a']))
-                    {
-                        $a = $_GET['a'];
-                        if($a == 1)
-                        {
-                            include_once("./pages/products.php");
-                        }
-                        else if($a == 2)
-                        {
-                            include_once("./pages/users.php");
-                        }
-                        else if($a == 3)
-                        {
-                            include_once("./pages/invoices.php");
-                        }
-                    }
-                ?>
-            </div>
-
-            <?php
-                include_once("./layouts/footer.php");
-            ?>
-        </body>
-        </html>
+    </body>
+    </html>

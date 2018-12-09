@@ -10,6 +10,7 @@
             <th>Mô tả</th>
             <th>Loại sản phẩm</th>
             <th>Hãng sản xuất</th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +18,7 @@
             <?php
             if(count($products) == 0)
             {
-                echo "<td colspan='5' class='text-center'>Hiện không có sản phẩm nào</td>";
+                echo "<td colspan='6' class='text-center'>Hiện không có sản phẩm nào</td>";
             }
             else
             {
@@ -30,6 +31,10 @@
                     <td><?php echo $product->description; ?></td>
                     <td><?php echo $product->product_type; ?></td>
                     <td><?php echo $product->manufacturer_id; ?></td>
+                    <td>
+                        <button class='btn btn-warning'>Edit</button>
+                        <button class='btn btn-danger'>Delete</button>
+                    </td>
                 </tr>
             <?php } } ?>
 

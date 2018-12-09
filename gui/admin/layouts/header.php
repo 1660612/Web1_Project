@@ -4,7 +4,7 @@
         <button class="float-right text-white dropbtn">
             <?php
                 $current_user = (new UserBUS())->GetByID($_SESSION["current_user_id"]);
-                echo $current_user->full_name;
+                echo "<img id='avatar_header' src='../img/admin.png' type='image/png'>"."<div id='header_admin_name'>$current_user->full_name</div>";
             ?>
         </button>
         <div class="dropdown-content">
