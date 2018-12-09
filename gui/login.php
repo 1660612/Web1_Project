@@ -1,5 +1,24 @@
 <?php
-    include_once("./lib/DataProvider.php");
+/**
+ * Created by PhpStorm.
+ * User: Tien Quach
+ * Date: 12/9/2018
+ * Time: 4:48 PM
+ */
+foreach(glob("DAO/*.php") as $filename)
+{
+    include $filename;
+}
+foreach(glob("DTO/*.php") as $filename)
+{
+    include $filename;
+}
+foreach(glob("BUS/*.php") as $filename)
+{
+    include $filename;
+}
+?>
+<?php
     session_start();
     if(isset($_POST['user_name']) && isset($_POST['password']))
     {
@@ -8,7 +27,7 @@
     }
     if(isset($_SESSION['user_name']))
     {
-        $is_admin = DataProvider::is_admin();
+        $is_admin = User::is_admin();
         if($is_admin == true)
         {
             header("refresh:0; url=./admin/index.php");
