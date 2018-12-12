@@ -75,6 +75,5 @@ foreach(glob("../../BUS/*.php") as $filename)
         <?php
             include_once("./layouts/footer.php");
         ?>
-
     </body>
     </html>

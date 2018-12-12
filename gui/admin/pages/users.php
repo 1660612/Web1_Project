@@ -36,7 +36,7 @@
                 <td><?php echo $user->email; ?></td>
                 <td>
                     <button class='btn btn-warning'>Edit</button>
-                    <button class='btn btn-danger' onclick='Load()'>Delete</button>
+                    <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'>Delete</button>
                 </td>
             </tr>
             <?php }}
@@ -53,7 +53,7 @@
             <p>Are you sure you want to delete this user</p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-danger">Yes</button>
+            <a id="user_id" href="./pages/user/delete.php?id="><button class="btn btn-danger">Yes</button></a>
             <button id="not_agree" class="btn btn-warning">No</button>
         </div>
     </div>

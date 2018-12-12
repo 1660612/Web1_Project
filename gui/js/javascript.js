@@ -13,15 +13,13 @@ function header_change(data, page)
     h.parentNode.insertBefore(para, h.nextSibling);
 }
 
-function Load() {
+function Load(id) {
     var modal = document.getElementById('myModal');
-
     var span = document.getElementsByClassName("close")[0];
     var not_agree = document.getElementById('not_agree');
-
-        modal.style.display = "block";
-
-
+    modal.style.display = "block";
+    var get_user = document.getElementById('user_id');
+    get_user.setAttribute("href",get_user.getAttribute("href") + id.toString()) ;
     span.onclick = function () {
         modal.style.display = "none";
     }
