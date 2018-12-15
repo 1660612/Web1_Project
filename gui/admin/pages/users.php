@@ -1,6 +1,8 @@
 <?php
 
     $users = (new UserBUS())->GetAll();
+
+
 ?>
 
 <h2 style="display: inline-block;">Danh sách các tài khoản</h2>
@@ -35,7 +37,8 @@
                 <td><?php echo $user->username; ?></td>
                 <td><?php echo $user->full_name; ?></td>
                 <td>
-                    <?php echo "<img src=\"data:image; base64, .'$user->avatar'\" "; ?>
+                    <?php echo $user->address; ?>
+                </td>
                 </td>
                 <td><?php echo $user->phone_number; ?></td>
                 <td><?php echo $user->email; ?></td>
@@ -68,18 +71,3 @@
     header_change("Tài khoản", "./index.php?a=2");
     document.getElementById("user_link").setAttribute("style", "background-color: #b3c734;");
 </script>
-<?php
-    if(isset($_GET['error']))
-    {
-        $error = $_GET['error'];
-        if($error == 403)
-        {
-            $error = "Bạn không thể thay đổi thông tin của người dùng khác";
-        }
-        ?>
-        <script>
-            alert("<?php echo $error; ?>");
-        </script>
-<?php
-    }
-?>

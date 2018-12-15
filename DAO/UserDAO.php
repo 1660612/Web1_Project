@@ -77,6 +77,11 @@ class UserDAO extends DB
             $sql = "UPDATE users SET full_name = '$user->full_name' WHERE id = $user->id";
             $this->ExecuteQuery($sql);
         }
+        if($user->avatar != '' && $user->avatar != null)
+        {
+            $sql = "UPDATE users SET avatar = '$user->avatar' WHERE id = $user->id";
+            $this->ExecuteQuery($sql);
+        }
         if($user->address != '' && $user->address != null)
         {
             $sql = "UPDATE users SET address = '$user->address' WHERE id = $user->id";
@@ -112,5 +117,35 @@ class UserDAO extends DB
         {
             return false;
         }
+    }
+
+    public function CheckUserNameExist($username)
+    {
+        $sql = "select id, username, avatar, full_name, address, phone_number, email, role_id from users WHERE username = '$username'";
+        $result = $this->ExecuteQuery($sql);
+        $row = mysqli_fetch_array($result);
+        if($row == null)
+        {
+            echo "chua ton tai";
+            return false;
+        }
+        elseif($row != null)
+        {
+            echo "da ton tai";
+            return true;
+        }
+    }
+
+    public function getRoleName($user_id)
+    {
+        $sql = "SELECT roles.name FROM roles JOIN users ON roles.id = users.role_id WHERE users.id = $user_id";
+        $result = $this->ExecuteQuery($sql);
+        $roles = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+            $roles[] = $name;
+        }
+        return $roles;
     }
 }

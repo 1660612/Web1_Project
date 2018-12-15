@@ -35,15 +35,24 @@ function Load(id) {
     }
 }
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//
+//         reader.onload = function (e) {
+//             document.getElementById("blah").setAttribute('src', e.target.result);
+//             alert(e.target.result);
+//         };
+//
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
-        reader.onload = function (e) {
-            document.getElementById("blah").setAttribute('src', e.target.result);
-            alert(e.target.result);
-        };
+function error_delete(error)
+{
+    document.getElementById(error).style.display = 'none';
+}
 
-        reader.readAsDataURL(input.files[0]);
-    }
+function upload_file(){
+    document.getElementById("image_file").click();
 }

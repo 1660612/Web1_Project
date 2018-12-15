@@ -27,6 +27,7 @@ class UserBUS
 
     public function Insert($user)
     {
+
         $this->userDAO->Insert($user);
     }
 
@@ -40,5 +41,15 @@ class UserBUS
     public function Update($user)
     {
         $this->userDAO->Update($user);
+    }
+
+    public function CheckUserNameExist($username)
+    {
+        return $this->userDAO->CheckUserNameExist($username);
+    }
+
+    public function getRoleName($user_id)
+    {
+        return $this->userDAO->getRoleName($user_id);
     }
 }

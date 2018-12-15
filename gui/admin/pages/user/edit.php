@@ -20,14 +20,13 @@ foreach(glob("../../../../BUS/*.php") as $filename)
     include $filename;
 }
 $user =  new User();
-echo $_GET['id'];
 if(isset($_GET['id']))
 {
     echo $_SESSION['current_user_id'];
     if($_SESSION['current_user_id'] != $_GET['id'])
     {
-        $error = 403;
-        header("refresh: 0; url=\"../../index.php?a=2&error=$error\"");
+        $error = "Bạn không thể thay đổi thông tin của người dùng khác";
+        header("Location:../../index.php?a=2&error=$error");
         exit();
     }
     $user->id = $_GET['id'];
@@ -44,9 +43,22 @@ if(isset($_POST['fullname']))
 {
     $user->full_name = $_POST['fullname'];
 }
-if(isset($_POST['avatar']))
+
+if(isset($_FILES['avatar']))
 {
-    $user->avatar = $_POST['avatar'];
+    if(getimagesize($_FILES['avatar']['tmp_name']) == FALSE)
+    {
+        echo 'please choose an image';
+    }
+    else
+    {
+        $image = addslashes($_FILES['avatar']['tmp_name']);
+        $name = addslashes($_FILES['avatar']['name']);
+        $image = file_get_contents($image);
+        $image = base64_encode($image);
+        $user->avatar =$image;
+        (new UserBUS())->Update($user);
+    }
 }
 if(isset($_POST['address']))
 {
