@@ -69,6 +69,13 @@ foreach(glob("../../BUS/*.php") as $filename)
             {
                 include_once("./pages/invoices.php");
             }
+            else if($a == 5)
+            {
+                if(isset($_GET['bus']))
+                {
+                    include_once("./pages/".$_GET['bus']."/user_form.php");
+                }
+            }
             ?>
         </div>
 

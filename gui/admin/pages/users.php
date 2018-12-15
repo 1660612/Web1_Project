@@ -1,8 +1,11 @@
 <?php
+
     $users = (new UserBUS())->GetAll();
 ?>
 
-<h2 class="text-center">Danh sách các tài khoản</h2>
+<h2 style="display: inline-block;">Danh sách các tài khoản</h2>
+<a class="float-right" href="./index.php?a=5&bus=user"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<hr/>
 <table>
     <thead>
         <tr>
@@ -31,11 +34,13 @@
             <tr>
                 <td><?php echo $user->username; ?></td>
                 <td><?php echo $user->full_name; ?></td>
-                <td><?php echo $user->address; ?></td>
+                <td>
+                    <?php echo "<img src=\"data:image; base64, .'$user->avatar'\" "; ?>
+                </td>
                 <td><?php echo $user->phone_number; ?></td>
                 <td><?php echo $user->email; ?></td>
                 <td>
-                    <button class='btn btn-warning'>Edit</button>
+                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn btn-warning'>Edit</button></a>
                     <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'>Delete</button>
                 </td>
             </tr>
@@ -63,3 +68,18 @@
     header_change("Tài khoản", "./index.php?a=2");
     document.getElementById("user_link").setAttribute("style", "background-color: #b3c734;");
 </script>
+<?php
+    if(isset($_GET['error']))
+    {
+        $error = $_GET['error'];
+        if($error == 403)
+        {
+            $error = "Bạn không thể thay đổi thông tin của người dùng khác";
+        }
+        ?>
+        <script>
+            alert("<?php echo $error; ?>");
+        </script>
+<?php
+    }
+?>

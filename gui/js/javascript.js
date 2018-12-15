@@ -34,3 +34,16 @@ function Load(id) {
         }
     }
 }
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById("blah").setAttribute('src', e.target.result);
+            alert(e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
