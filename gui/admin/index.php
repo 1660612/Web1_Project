@@ -33,7 +33,7 @@ foreach(glob("../../BUS/*.php") as $filename)
         <script src="../js/javascript.js"></script>
         <link rel="icon" type="image/png" href="../img/admin.png" />
     </head>
-    <body>
+    <body onload="getCountries()">
         <?php
             include_once("./layouts/header.php");
         ?>

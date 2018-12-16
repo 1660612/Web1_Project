@@ -19,31 +19,34 @@ foreach(glob("../../../../BUS/*.php") as $filename)
 {
     include $filename;
 }
-$user =  new User();
-if(isset($_POST['username']))
+
+$product =  new Product();
+
+if(isset($_POST['name']))
 {
-    $userBUS = new UserBUS();
-    $result = $userBUS->CheckUserNameExist($_POST['username']);
-    if($result==true)
-    {
-        $error = 1;
-        header("Location:../../index.php?a=5&bus=user&error=$error");
-        exit();
-    }
-    elseif($result == false)
-    {
-        $user->username = $_POST['username'];
-    }
+    $product->name = $_POST['name'];
 }
-if(isset($_POST['password']))
+
+if(isset($_POST['receipt_date']))
 {
-    $user->password = $_POST['password'];
+    $product->receipt_date = $_POST['receipt_date'];
 }
-if(isset($_POST['fullname']))
+
+if(isset($_POST['total_sale_count']))
 {
-    $user->full_name = $_POST['fullname'];
+    $product->total_sale_count = $_POST['total_sale_count'];
 }
-if(isset($_POST['avatar']))
+
+if(isset($_POST['product_type_id']))
+{
+    $product->product_type_id = $_POST['product_type_id'];
+}
+
+if(isset($_POST['manufacturer_id']))
+{
+    $product->manufacturer_id = $_POST['manufacturer_id'];
+}
+if(isset($_FILES['image']))
 {
     if(getimagesize($_FILES['image']['tmp_name']) == FALSE)
     {
@@ -52,29 +55,27 @@ if(isset($_POST['avatar']))
     else
     {
         $image = addslashes($_FILES['image']['tmp_name']);
-//        $name = addslashes($_FILES['image']['name']);
         $image = file_get_contents($image);
         $image = base64_encode($image);
-        $user->avatar = $image;
+        $product->image =$image;
     }
 }
-if(isset($_POST['address']))
+
+if(isset($_POST['price']))
 {
-    $user->address = $_POST['address'];
-}
-if(isset($_POST['phone_number']))
-{
-    $user->phone_number = $_POST['phone_number'];
-}
-if(isset($_POST['email']))
-{
-    $user->email = $_POST['email'];
-}
-if(isset($_POST['role_id']))
-{
-    $user->role_id = $_POST['role_id'];
+    $product->price = $_POST['price'];
 }
 
-(new UserBUS())->Insert($user);
-header("refresh: 0; url='../../index.php?a=2'");
+if(isset($_POST['description']))
+{
+    $product->description = $_POST['description'];
+}
+
+if(isset($_POST['product_source']))
+{
+    $product->product_source = $_POST['product_source'];
+}
+
+(new ProductBUS())->Insert($product);
+header("refresh: 0; url='../../index.php?a=1'");
 ?>

@@ -10,7 +10,7 @@ class ProductTypeDAO extends DB
 {
     public function GetAll()
     {
-        $sql = "select name from product_types";
+        $sql = "select id, name from product_types";
         $result = $this->ExecuteQuery($sql);
         $product_types = array();
         while($row=mysqli_fetch_array($result))

@@ -43,19 +43,19 @@ if(isset($_POST['fullname']))
 {
     $user->full_name = $_POST['fullname'];
 }
-if(isset($_POST['avatar']))
+if(isset($_FILES['avatar']))
 {
-    if(getimagesize($_FILES['image']['tmp_name']) == FALSE)
+    if(getimagesize($_FILES['avatar']['tmp_name']) == FALSE)
     {
         echo 'please choose an image';
     }
     else
     {
-        $image = addslashes($_FILES['image']['tmp_name']);
-//        $name = addslashes($_FILES['image']['name']);
+        $image = addslashes($_FILES['avatar']['tmp_name']);
+        $name = addslashes($_FILES['avatar']['name']);
         $image = file_get_contents($image);
         $image = base64_encode($image);
-        $user->avatar = $image;
+        $user->avatar =$image;
     }
 }
 if(isset($_POST['address']))

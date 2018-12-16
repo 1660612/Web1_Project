@@ -31,7 +31,7 @@
                     <td><a href="./index.php?a=1&id=<?php echo $product->id; ?>"><?php echo $product->name; ?></a></td>
                     <td id="money"><?php echo $product->price; ?></td>
                     <td><?php echo $product->description; ?></td>
-                    <td><?php echo $product->product_type; ?></td>
+                    <td><?php echo $product->product_type_id; ?></td>
                     <td><?php echo $product->manufacturer_id; ?></td>
                     <td>
                         <a href="./index.php?a=5&bus=product&id=<?php echo $product->id; ?>"><button class='btn btn-warning'>Edit</button></a>

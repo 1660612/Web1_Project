@@ -58,7 +58,10 @@ class ProductDAO extends DB
 
     public function Insert($product)
     {
-        $sql = "INSERT INTO products(name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, description, product_source) VALUES ('$product->name', '$product->receipt_date', $product->total_sale_count, $product->product_type_id, $product->manufacturer_id, '$product->image', $product->price, $product->view_count, '$product->description', '$product->product_source')";
+        echo "Ham Insert";
+        $sql = "INSERT INTO products(name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, 
+description, product_source) VALUES ('$product->name', '$product->receipt_date', $product->total_sale_count, $product->product_type_id, 
+$product->manufacturer_id, '$product->image', $product->price, $product->view_count, '$product->description', '$product->product_source')";
         $this->ExecuteQuery($sql);
     }
 
