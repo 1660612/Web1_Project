@@ -57,8 +57,28 @@ class InvoiceDAO extends DB
 
     public function Update($invoice)
     {
-        $sql = "UPDATE invoices SET created_date = '$invoice->created_date', total_price = $invoice->total_price, user_id = $invoice->user_id
-                WHERE id = $invoice->id";
-        $this->ExecuteQuery($sql);
+        if($invoice->created_date != '' && $invoice->created_date != null)
+        {
+            $sql = "UPDATE invoices SET created_date = '$invoice->created_date' WHERE id = $invoice->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($invoice->total_price != 0 && $invoice->total_price != null)
+        {
+            $sql = "UPDATE invoices SET total_price = $invoice->total_price WHERE id = $invoice->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($invoice->user_id != '' && $invoice->user_id != null)
+        {
+            $sql = "UPDATE invoices SET user_id = $invoice->user_id WHERE id = $invoice->id";
+            $this->ExecuteQuery($sql);
+        }
+    }
+
+    public function getUserFullName($invoice_id)
+    {
+        $sql = "SELECT users.full_name FROM users, invoices WHERE users.id = invoices.user_id AND invoices.id = $invoice_id";
+        $result = $this->ExecuteQuery($sql);
+        $row=mysqli_fetch_array($result);
+        return $row[0];
     }
 }

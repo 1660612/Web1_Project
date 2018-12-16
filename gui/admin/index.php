@@ -17,7 +17,7 @@ foreach(glob("../../BUS/*.php") as $filename)
 ?>
 
 <?php
-    if(!isset($_SESSION["current_user_id"]) || UserDAO::is_admin($_SESSION['current_user_id']) == false)
+    if(!isset($_SESSION["current_user_id"]) || (new UserBUS())->is_admin($_SESSION['current_user_id']) == false)
     {
         header("Refresh:0; url=../login.php");
     }
@@ -73,7 +73,7 @@ foreach(glob("../../BUS/*.php") as $filename)
             {
                 if(isset($_GET['bus']))
                 {
-                    include_once("./pages/".$_GET['bus']."/user_form.php");
+                    include_once("./pages/".$_GET['bus']."/form.php");
                 }
             }
             ?>

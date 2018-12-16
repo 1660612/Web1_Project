@@ -2,7 +2,9 @@
 $invoices = (new InvoiceBUS)->GetAll();
 ?>
 
-<h2 class="text-center">Danh sách các đơn hàng</h2>
+<h2 style="display: inline-block;">Danh sách các đơn hàng</h2>
+<a class="float-right" href="./index.php?a=5&bus=invoice"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<hr/>
 <table>
     <thead>
     <tr>
@@ -32,10 +34,10 @@ $invoices = (new InvoiceBUS)->GetAll();
                     echo $date->format('Y-m-d'); ?>
                 </td>
                 <td><?php echo $invoice->total_price; ?></td>
-                <td><?php echo $invoice->user_id; ?></td>
+                <td><?php echo (new InvoiceBUS())->getUserFullName($invoice->id); ?></td>
                 <td>
-                    <button class='btn btn-warning'>Edit</button>
-                    <button class='btn btn-danger' onclick='Load()'>Delete</button>
+                    <a href="./index.php?a=5&bus=invoice&id=<?php echo $invoice->id; ?>"><button class='btn btn-warning'>Edit</button></a>
+                    <button class='btn btn-danger' onclick='Load(<?php echo $invoice->id; ?>)'>Delete</button>
                 </td>
             </tr>
         <?php }}
@@ -52,7 +54,7 @@ $invoices = (new InvoiceBUS)->GetAll();
             <p>Are you sure you want to delete this invoice</p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-danger">Yes</button>
+            <a id="id" href="./pages/invoice/delete.php?id="><button class="btn btn-danger">Yes</button></a>
             <button id="not_agree" class="btn btn-warning">No</button>
         </div>
     </div>

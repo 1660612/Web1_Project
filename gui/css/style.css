@@ -295,7 +295,7 @@ h2{
     color: red;
 }
 
-#user_form{
+#form{
     width:350px;
     margin: auto;
 }
@@ -341,5 +341,21 @@ input{
 select {
     height:30px;
     width: 213px;
+    margin-bottom: 10px;
+}
+
+#login_form{
+    width:330px;
+    height: 180px;
+    margin: auto;
+    background-color: lightgreen;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#login-header{
     margin-bottom: 10px;
 }

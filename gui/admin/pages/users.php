@@ -61,7 +61,7 @@
             <p>Are you sure you want to delete this user</p>
         </div>
         <div class="modal-footer">
-            <a id="user_id" href="./pages/user/delete.php?id="><button class="btn btn-danger">Yes</button></a>
+            <a id="id" href="./pages/user/delete.php?id="><button class="btn btn-danger">Yes</button></a>
             <button id="not_agree" class="btn btn-warning">No</button>
         </div>
     </div>

@@ -21,7 +21,7 @@ foreach(glob("../../../../BUS/*.php") as $filename)
 }
 if(isset($_GET['id']))
 {
-    (new UserBUS)->Delete($_GET['id']);
+    (new InvoiceBUS())->Delete($_GET['id']);
 }
-header("refresh: 0; url='../../index.php?a=2'");
+header("refresh: 0; url='../../index.php?a=3'");
 ?>

@@ -43,6 +43,11 @@ class UserBUS
         $this->userDAO->Update($user);
     }
 
+    public function is_admin($user_id)
+    {
+        return $this->userDAO->is_admin($user_id);
+    }
+
     public function CheckUserNameExist($username)
     {
         return $this->userDAO->CheckUserNameExist($username);

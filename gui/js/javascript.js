@@ -18,7 +18,7 @@ function Load(id) {
     var span = document.getElementsByClassName("close")[0];
     var not_agree = document.getElementById('not_agree');
     modal.style.display = "block";
-    var get_user = document.getElementById('user_id');
+    var get_user = document.getElementById('id');
     get_user.setAttribute("href",get_user.getAttribute("href") + id.toString()) ;
     span.onclick = function () {
         modal.style.display = "none";

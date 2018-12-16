@@ -55,4 +55,6 @@ class RoleDAO extends DB
         $sql = "UPDATE roles SET name = '$role->name' WHERE id = $role->id";
         $this->ExecuteQuery($sql);
     }
+
+
 }

@@ -1,7 +1,9 @@
 <?php
     $products = (new ProductBUS())->GetAll();
 ?>
-<h2 class="text-center">Danh sách các sản phẩm</h2>
+<h2 style="display: inline-block;">Danh sách các sản phẩm</h2>
+<a class="float-right" href="./index.php?a=5&bus=product"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<hr/>
 <table>
     <thead>
         <tr>
@@ -32,8 +34,8 @@
                     <td><?php echo $product->product_type; ?></td>
                     <td><?php echo $product->manufacturer_id; ?></td>
                     <td>
-                        <button class='btn btn-warning'>Edit</button>
-                        <button class='btn btn-danger'>Delete</button>
+                        <a href="./index.php?a=5&bus=product&id=<?php echo $product->id; ?>"><button class='btn btn-warning'>Edit</button></a>
+                        <button class='btn btn-danger' onclick='Load(<?php echo $product->id; ?>)'>Delete</button>
                     </td>
                 </tr>
             <?php } } ?>
@@ -41,6 +43,22 @@
 
     </tbody>
 </table>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Are you sure</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this invoice</p>
+        </div>
+        <div class="modal-footer">
+            <a id="id" href="./pages/invoice/delete.php?id="><button class="btn btn-danger">Yes</button></a>
+            <button id="not_agree" class="btn btn-warning">No</button>
+        </div>
+    </div>
+
+</div>
 <script>
     header_change("Sản phẩm", "./index.php?a=1");
     document.getElementById("product_link").setAttribute("style", "background-color: #b3c734;");

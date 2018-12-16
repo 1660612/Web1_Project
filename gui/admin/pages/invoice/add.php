@@ -19,9 +19,19 @@ foreach(glob("../../../../BUS/*.php") as $filename)
 {
     include $filename;
 }
-if(isset($_GET['id']))
+$invoice =  new Invoice();
+if(isset($_POST['created_date']))
 {
-    (new UserBUS)->Delete($_GET['id']);
+    $invoice->created_date = $_POST['created_date'];
 }
-header("refresh: 0; url='../../index.php?a=2'");
+if(isset($_POST['total_price']))
+{
+    $invoice->total_price = $_POST['total_price'];
+}
+if(isset($_POST['user_id']))
+{
+    $invoice->user_id = $_POST['user_id'];
+}
+(new InvoiceBUS())->Insert($invoice);
+header("refresh: 0; url='../../index.php?a=3'");
 ?>

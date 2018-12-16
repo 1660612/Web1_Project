@@ -1,4 +1,4 @@
-<form id="user_form" method="post" enctype="multipart/form-data" action="./pages/user/<?php isset($_GET['id']) ? $action = 'edit.php?id='.$_GET['id'] : $action = 'add.php'; echo $action; ?>" autocomplete="off">
+<form id="form" method="post" enctype="multipart/form-data" action="./pages/user/<?php isset($_GET['id']) ? $action = 'edit.php?id='.$_GET['id'] : $action = 'add.php'; echo $action; ?>" autocomplete="off">
     <?php if($action == 'add.php') { ?>
     <label class="display-block float-left label-form">Tên đăng nhập:</label> <input type="text" name="username" class="display-block" onkeypress="error_delete('username_error')"/>
         <?php if(isset($_GET['error']) && $_GET['error'] == 1){

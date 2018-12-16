@@ -104,11 +104,11 @@ class UserDAO extends DB
         }
     }
 
-    public static function is_admin($user_id)
+    public function is_admin($user_id)
     {
         $sql = "SELECT roles.name from roles, users WHERE users.role_id = roles.id AND users.id = $user_id";
-        $result = self::ExecuteQuery($sql);
-        $row = mysqli_fetch_row($result);
+        $result = $this->ExecuteQuery($sql);
+        $row = mysqli_fetch_array($result);
         if($row[0] == "Admin")
         {
             return true;

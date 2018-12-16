@@ -39,6 +39,11 @@ class InvoiceBUS
 
     public function Update($invoice)
     {
-        $this->loaiSanPhamDAO->Update($invoice);
+        $this->invoiceDAO->Update($invoice);
+    }
+
+    public function getUserFullName($invoice_id)
+    {
+        return $this->invoiceDAO->getUserFullName($invoice_id);
     }
 }

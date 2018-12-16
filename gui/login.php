@@ -36,13 +36,15 @@ foreach(glob("../BUS/*.php") as $filename)
     }
     if(isset($_SESSION['current_user_id']))
     {
-        $is_admin = UserDAO::is_admin($_SESSION['current_user_id']);
+        $is_admin = (new UserBUS())->is_admin($_SESSION['current_user_id']);
         if($is_admin == true)
         {
             header("refresh:0; url=./admin/index.php");
+            exit();
         }
         else {
             header("refresh:0; url=./index.php");
+            exit();
         }
     }
 ?>
@@ -56,10 +58,12 @@ foreach(glob("../BUS/*.php") as $filename)
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <form action="" method="post">
-        User Name: <input type="text" name="user_name" placeholder="Enter user name..." />
-        Password: <input type="password" name="password" placeholder="Enter password..." />
-        <input type="submit" value="Login" />
+    <form id="login_form" action="" method="post">
+        <h2 id="login-header" class="text-center">Login Form</h2>
+        <hr/>
+        <label class="display-block float-left label-form">User Name: </label><input class="display-block" type="text" name="user_name" placeholder="Enter user name..." />
+        <label class="display-block float-left label-form">Password: </label><input class="display-block" type="password" name="password" placeholder="Enter password..." />
+        <input class="btn btn-submit" type="submit" value="Login" style="margin-left: 130px;height: 38px; margin-top: 10px;" />
     </form>
 </body>
 </html>
