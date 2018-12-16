@@ -11,11 +11,11 @@
 <table>
     <thead>
         <tr>
-            <th>Tên đăng nhập</th>
-            <th>Tên hiển thị</th>
-            <th>Địa chỉ</th>
-            <th>Điện thoại</th>
-            <th>Email</th>
+            <th class="arrow-down" onclick="sortTable(0, this)">Tên đăng nhập</th>
+            <th class="arrow-down" onclick="sortTable(1, this)">Tên hiển thị</th>
+            <th class="arrow-down" onclick="sortTable(2, this)">Địa chỉ</th>
+            <th class="arrow-down" onclick="sortTable(3, this)">Điện thoại</th>
+            <th class="arrow-down" onclick="sortTable(4, this)">Email</th>
             <th>Hành động</th>
         </tr>
     </thead>

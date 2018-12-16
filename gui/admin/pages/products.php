@@ -7,11 +7,11 @@
 <table>
     <thead>
         <tr>
-            <th>Tên sản phẩm</th>
-            <th>Giá</th>
-            <th>Mô tả</th>
-            <th>Loại sản phẩm</th>
-            <th>Hãng sản xuất</th>
+            <th class="arrow-down" onclick="sortTable(0, this)">Tên sản phẩm</th>
+            <th class="arrow-down" onclick="sortTable(1, this)">Giá</th>
+            <th class="arrow-down" onclick="sortTable(2, this)">Mô tả</th>
+            <th class="arrow-down" onclick="sortTable(3, this)">Loại sản phẩm</th>
+            <th class="arrow-down" onclick="sortTable(4, this)">Hãng sản xuất</th>
             <th>Hành động</th>
         </tr>
     </thead>

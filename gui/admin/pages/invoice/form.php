@@ -1,6 +1,11 @@
+<h2 class="text-center" style="margin-bottom: 20px; margin-top: 20px;">
+    <?php
+    echo isset($_GET['id']) ? "Thay đổi thông tin đơn hàng" : "Thêm đơn hàng";
+    ?>
+</h2>
 <form style="width: 500px;" id="form" method="post" enctype="multipart/form-data" action="./pages/invoice/<?php isset($_GET['id']) ? $action = 'edit.php?id='.$_GET['id'] : $action = 'add.php'; echo $action; ?>" autocomplete="off">
     <label class="display-block float-left label-form" style="width: 150px;">Ngày tạo đơn hàng:</label> <input type="date" name="created_date" class="display-block"/>
-    <label class="display-block float-left label-form" style="width: 150px;">Tổng giá trị:</label> <input type="text" name="total_price" class="display-block"/>
+    <label class="display-block float-left label-form" style="width: 150px;">Tổng giá trị:</label> <input type="text" name="total_price" class="display-block" placeholder="Nhập số tiền..."/>
     <label class="display-block float-left label-form" style="width: 150px;">Người tạo:</label> <select name="user_id">
         <option value="" selected>Select 1 user</option>
         <?php foreach((new UserBUS())->GetAll() as $user) echo "<option value='$user->id'>$user->full_name</option>"; ?>

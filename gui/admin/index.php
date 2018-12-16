@@ -31,9 +31,11 @@ foreach(glob("../../BUS/*.php") as $filename)
         <title><?php echo $title; ?></title>
         <link rel="stylesheet" href="../css/style.css" />
         <script src="../js/javascript.js"></script>
+        <script src="../js/chart.min.js"></script>
+        <script src="../js/chart.bundle.min.js"></script>
         <link rel="icon" type="image/png" href="../img/admin.png" />
     </head>
-    <body onload="getCountries()">
+    <body>
         <?php
             include_once("./layouts/header.php");
         ?>

@@ -8,9 +8,9 @@ $invoices = (new InvoiceBUS)->GetAll();
 <table>
     <thead>
     <tr>
-        <th>Ngày lập</th>
-        <th>Tổng thành tiền</th>
-        <th>Tài khoản</th>
+        <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>
+        <th class="arrow-down" onclick="sortTable(1, this)">Tổng thành tiền</th>
+        <th class="arrow-down" onclick="sortTable(2, this)">Tài khoản</th>
         <th>Hành động</th>
     </tr>
     </thead>
