@@ -5,7 +5,7 @@ $invoices = (new InvoiceBUS)->GetAll();
 <h2 style="display: inline-block;">Danh sách các đơn hàng</h2>
 <a class="float-right" href="./index.php?a=5&bus=invoice"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
 <hr/>
-<table>
+<table class="table">
     <thead>
     <tr>
         <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>

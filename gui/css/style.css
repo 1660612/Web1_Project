@@ -128,19 +128,6 @@ hr {
     margin-right: 5px;
 }
 
-table{
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    border-spacing: 0px;
-    width: 100%;
-    margin: auto;
-}
-
-table tr th, table tr td{
-    border: 1px solid lightgray;
-    text-align: center;
-    height: 38px;
-}
 #money::after{
     content: " VND";
 }
@@ -389,4 +376,9 @@ table tr th{
     top: -10px;
     left: 5px;
     position: relative;
+}
+
+a:hover{
+    text-decoration: none;
+    color: unset;
 }

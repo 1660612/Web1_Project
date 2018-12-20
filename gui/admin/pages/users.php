@@ -6,9 +6,9 @@
 ?>
 
 <h2 style="display: inline-block;">Danh sách các tài khoản</h2>
-<a class="float-right" href="./index.php?a=5&bus=user"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<a class="float-right" href="./index.php?a=5&bus=user"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></a>
 <hr/>
-<table>
+<table class="table table-hover">
     <thead>
         <tr>
             <th class="arrow-down" onclick="sortTable(0, this)">Tên đăng nhập</th>
@@ -43,8 +43,8 @@
                 <td><?php echo $user->phone_number; ?></td>
                 <td><?php echo $user->email; ?></td>
                 <td>
-                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn btn-warning'>Edit</button></a>
-                    <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'>Delete</button>
+                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn btn-success'><i class="glyphicon glyphicon-edit"></i></button></a>
+                    <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'><i class="glyphicon glyphicon-trash"></i> </button>
                 </td>
             </tr>
             <?php }}
