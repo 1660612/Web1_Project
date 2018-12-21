@@ -30,4 +30,24 @@
             $("#admin_menu").css("margin-left","-200px");
         }
     });
+    $(function(){
+
+        var $win = $(window); // or $box parent container
+        var $box = $("#show_menu");
+
+        $win.on("click", function(event){
+            if($(window).width() <= 800) {
+
+                if (
+                    $box.has(event.target).length == 0 //checks if descendants of $box was clicked
+                    &&
+                    !$box.is(event.target) //checks if the $box itself was clicked
+                ) {
+                    $("#admin_menu").css("margin-left", "-200px");
+                    can_open = false;
+                }
+            }
+        });
+    });
+
 </script>

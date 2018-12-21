@@ -117,13 +117,13 @@ body{
     /*font-size: 13px;*/
 /*}*/
 
-/*#sub_title {*/
-    /*text-decoration: none;*/
-    /*color: #000;*/
-    /*display: inline-block;*/
-    /*font-size: 30px;*/
-    /*line-height: 40px;*/
-/*}*/
+#sub_title {
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    font-size: 30px;
+    line-height: 40px;
+}
 /*hr {*/
     /*margin-left: 5px;*/
     /*margin-right: 5px;*/
@@ -468,4 +468,8 @@ div{
 
 table tr th{
     cursor:pointer;
+}
+
+#search_form input, #search_form .btn{
+    border-radius:0px;
 }

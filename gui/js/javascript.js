@@ -131,3 +131,9 @@ function sortTable(n, tag) {
         }
     }
 }
+
+function ResizePage(){
+    if($(window).width() > 800){
+        $("#admin_menu").css("margin-left","0px");
+    }
+}

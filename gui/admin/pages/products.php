@@ -1,8 +1,21 @@
 <?php
     $products = (new ProductBUS())->GetAll();
 ?>
-<h2 style="display: inline-block;">Danh sách các sản phẩm</h2>
-<a class="float-right" href="./index.php?a=5&bus=product"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<div class="row">
+    <h2 class="col-5" style="display: inline-block;">Danh sách các sản phẩm</h2>
+    <div class="col-6">
+        <form id="search_form" action="" method="get">
+            <div class="row">
+                <input type="hidden" value="1" name="a" class="form-control col-10" />
+                <input type="text" name="q" class="form-control col-10 mr-0" placeholder="Tìm kiếm theo tên sản phẩm..." />
+                <div class="ml-0 d-inline-block">
+                    <span class="btn btn-success"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <a class="col-1 float-right" href="./index.php?a=5&bus=product"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></a>
+</div>
 <hr/>
 <table class="table">
     <thead>
@@ -35,7 +48,7 @@
                     <td><?php echo $product->manufacturer_id; ?></td>
                     <td>
                         <a href="./index.php?a=5&bus=product&id=<?php echo $product->id; ?>"><button class='btn btn-warning'><i class="fa fa-edit"></i></button></a>
-                        <button class='btn btn-danger' onclick='Load(<?php echo $product->id; ?>)'>Delete</button>
+                        <button class='btn btn-danger' onclick='Load(<?php echo $product->id; ?>)'><i class="fa fa-trash-alt"></i></button>
                     </td>
                 </tr>
             <?php } } ?>
@@ -63,4 +76,9 @@
     header_change("Sản phẩm", "./index.php?a=1");
     $(".active").removeClass("active");
     $("#product_link").addClass("active");
+</script>
+<script>
+    $(".btn.btn-success").click(function(){
+        $("#search_form").submit();
+    });
 </script>

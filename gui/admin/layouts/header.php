@@ -1,8 +1,8 @@
 <div id="admin_header" class="bg-dark">
-    <div id="show_menu" class="d-inline-block float-left ml-3 h-100" style="display: none; line-height: 70px;">
+    <div id="show_menu" class="float-left ml-3 h-100" style="display: none; line-height: 70px;">
         <button class="btn btn-default"><i class="fa fa-bars"></i></button>
     </div>
-    <div class="d-inline-block h-100">
+    <div class="d-inline-block h-100 ml-3">
         <a class="d-inline-block align-middle" href="./index.php" style="font-size: 25px; font-weight:bold;">
             ABC Shop
         </a>
