@@ -4,7 +4,7 @@
 <h2 style="display: inline-block;">Danh sách các sản phẩm</h2>
 <a class="float-right" href="./index.php?a=5&bus=product"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
 <hr/>
-<table>
+<table class="table">
     <thead>
         <tr>
             <th class="arrow-down" onclick="sortTable(0, this)">Tên sản phẩm</th>
@@ -34,7 +34,7 @@
                     <td><?php echo $product->product_type_id; ?></td>
                     <td><?php echo $product->manufacturer_id; ?></td>
                     <td>
-                        <a href="./index.php?a=5&bus=product&id=<?php echo $product->id; ?>"><button class='btn btn-warning'>Edit</button></a>
+                        <a href="./index.php?a=5&bus=product&id=<?php echo $product->id; ?>"><button class='btn btn-warning'><i class="fa fa-edit"></i></button></a>
                         <button class='btn btn-danger' onclick='Load(<?php echo $product->id; ?>)'>Delete</button>
                     </td>
                 </tr>
@@ -61,5 +61,6 @@
 </div>
 <script>
     header_change("Sản phẩm", "./index.php?a=1");
-    document.getElementById("product_link").setAttribute("style", "background-color: #b3c734;");
+    $(".active").removeClass("active");
+    $("#product_link").addClass("active");
 </script>

@@ -30,12 +30,19 @@ foreach(glob("../../BUS/*.php") as $filename)
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title><?php echo $title; ?></title>
         <link rel="stylesheet" href="../css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../css/all.min.css" />
         <link rel="stylesheet" href="../css/style.css" />
         <script src="../js/javascript.js"></script>
         <script src="../js/chart.min.js"></script>
         <script src="../js/chart.bundle.min.js"></script>
+
+        <!-- jQuery library -->
         <script src="../js/jquery.min.js"></script>
+
+        <!-- Popper JS -->
         <script src="../js/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
         <script src="../js/bootstrap.min.js"></script>
         <link rel="icon" type="image/png" href="../img/admin.png" />
     </head>
@@ -48,11 +55,11 @@ foreach(glob("../../BUS/*.php") as $filename)
             include_once("./layouts/menu.php");
         ?>
 
-        <div id="admin_content">
+        <div id="admin_content" class="w-75 d-inline-block">
             <?php
                 include_once("./layouts/sub-header.php");
             ?>
-
+            <br/>
             <?php
                 $a = 0;
                 if(isset($_GET['a']))

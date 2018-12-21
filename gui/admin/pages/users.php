@@ -6,7 +6,7 @@
 ?>
 
 <h2 style="display: inline-block;">Danh sách các tài khoản</h2>
-<a class="float-right" href="./index.php?a=5&bus=user"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> </button></a>
+<a class="float-right" href="./index.php?a=5&bus=user"><button class="btn btn-primary"><i class="fa fa-plus"></i> </button></a>
 <hr/>
 <table class="table table-hover">
     <thead>
@@ -43,8 +43,8 @@
                 <td><?php echo $user->phone_number; ?></td>
                 <td><?php echo $user->email; ?></td>
                 <td>
-                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn btn-success'><i class="glyphicon glyphicon-edit"></i></button></a>
-                    <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'><i class="glyphicon glyphicon-trash"></i> </button>
+                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn btn-default'><i class="fa fa-edit"></i></button></a>
+                    <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)'><i class="fa fa-trash-alt"></i> </button>
                 </td>
             </tr>
             <?php }}
@@ -69,5 +69,6 @@
 </div>
 <script>
     header_change("Tài khoản", "./index.php?a=2");
-    document.getElementById("user_link").setAttribute("style", "background-color: #b3c734;");
+    $(".active").removeClass("active");
+    $("#user_link").addClass("active");
 </script>

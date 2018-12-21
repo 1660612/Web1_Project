@@ -38,6 +38,6 @@
     });
 </script>
 <script>
-    document.getElementById("dashboard_link").setAttribute("style", "background-color: #b3c734;");
-
+    $(".active").removeClass("active");
+    $("#dashboard_link").addClass("active");
 </script>

@@ -1,49 +1,50 @@
 <?php
 $invoices = (new InvoiceBUS)->GetAll();
 ?>
-
 <h2 style="display: inline-block;">Danh sách các đơn hàng</h2>
-<a class="float-right" href="./index.php?a=5&bus=invoice"><button class="btn mg-b-s" style="background-color: aquamarine; height: 30px;">Add</button></a>
+<a class="float-right" href="./index.php?a=5&bus=invoice"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></a>
 <hr/>
-<table class="table">
-    <thead>
-    <tr>
-        <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>
-        <th class="arrow-down" onclick="sortTable(1, this)">Tổng thành tiền</th>
-        <th class="arrow-down" onclick="sortTable(2, this)">Tài khoản</th>
-        <th>Hành động</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="table-responsive">
+    <table class="table w-75 d-table mx-auto">
+        <thead >
+        <tr>
+            <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>
+            <th class="arrow-down" onclick="sortTable(1, this)">Tổng thành tiền</th>
+            <th class="arrow-down" onclick="sortTable(2, this)">Tài khoản</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <?php
-    if(count($invoices) == 0)
-    {
-        echo "<td colspan='4'>Không có đơn hàng nào để hiển thị</td>";
-    }
-
-    else
-    {
-        foreach($invoices as $invoice)
+        <?php
+        if(count($invoices) == 0)
         {
-            ?>
-            <tr>
-                <?php  ?>
-                <td>
-                    <?php $date = new DateTime($invoice->created_date);
-                    echo $date->format('Y-m-d'); ?>
-                </td>
-                <td><?php echo $invoice->total_price; ?></td>
-                <td><?php echo (new InvoiceBUS())->getUserFullName($invoice->id); ?></td>
-                <td>
-                    <a href="./index.php?a=5&bus=invoice&id=<?php echo $invoice->id; ?>"><button class='btn btn-warning'>Edit</button></a>
-                    <button class='btn btn-danger' onclick='Load(<?php echo $invoice->id; ?>)'>Delete</button>
-                </td>
-            </tr>
-        <?php }}
-    ?>
-    </tbody>
-</table>
+            echo "<td colspan='4'>Không có đơn hàng nào để hiển thị</td>";
+        }
+
+        else
+        {
+            foreach($invoices as $invoice)
+            {
+                ?>
+                <tr>
+                    <?php  ?>
+                    <td>
+                        <?php $date = new DateTime($invoice->created_date);
+                        echo $date->format('Y-m-d'); ?>
+                    </td>
+                    <td><?php echo $invoice->total_price; ?></td>
+                    <td><?php echo (new InvoiceBUS())->getUserFullName($invoice->id); ?></td>
+                    <td>
+                        <a href="./index.php?a=5&bus=invoice&id=<?php echo $invoice->id; ?>"><button class='btn btn-warning'><i class="fa fa-edit"></i></button></a>
+                        <button class='btn btn-danger' onclick='Load(<?php echo $invoice->id; ?>)'><i class="fa fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+            <?php }}
+        ?>
+        </tbody>
+    </table>
+</div>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -62,5 +63,6 @@ $invoices = (new InvoiceBUS)->GetAll();
 </div>
 <script>
     header_change("Đơn hàng", "./index.php?a=3");
-    document.getElementById("invoice_link").setAttribute("style", "background-color: #b3c734;");
+    $(".active").removeClass("active");
+    $("#invoice_link").addClass("active");
 </script>
