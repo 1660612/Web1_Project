@@ -46,4 +46,9 @@ class InvoiceBUS
     {
         return $this->invoiceDAO->getUserFullName($invoice_id);
     }
+
+    public function GetTop10ByDate()
+    {
+        return $this->invoiceDAO->GetTop10ByDate();
+    }
 }

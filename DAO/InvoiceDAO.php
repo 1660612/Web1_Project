@@ -81,4 +81,24 @@ class InvoiceDAO extends DB
         $row=mysqli_fetch_array($result);
         return $row[0];
     }
+
+    public function GetTop10ByDate()
+    {
+        $sql = "select id, created_date, total_price, user_id from invoices ORDER BY created_date DESC LIMIT 10";
+        $result = $this->ExecuteQuery($sql);
+        $invoices = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $invoice = new Invoice();
+            $invoice->id = $id;
+            $invoice->created_date = $created_date;
+            $invoice->total_price = $total_price;
+            $invoice->user_id = $user_id;
+            $invoices[] = $invoice;
+        }
+
+        return $invoices;
+    }
 }
