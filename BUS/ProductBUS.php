@@ -41,4 +41,19 @@ class ProductBUS
     {
         $this->productDAO->Update($product);
     }
+
+    public function SearchByName($product_name)
+    {
+        return $this->productDAO->SearchByName($product_name);
+    }
+
+    public function GetProductTypeName($product_id)
+    {
+        return $this->productDAO->GetProductTypeName($product_id);
+    }
+
+    public function GetManufacturerName($product_id)
+    {
+        return $this->productDAO->GetManufacturerName($product_id);
+    }
 }

@@ -1,8 +1,8 @@
-<div id="admin_menu" class="d-block float-left bg-dark w-25" style="height: -webkit-fill-available;">
+<div id="admin_menu" class="d-block float-left bg-dark">
     <div class="wrapper w-100">
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                <li id="dashboard_link" class="active">
+                <li id="dashboard_link">
                     <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=0">Trang chủ</a>
                 </li>
                 <li id="product_link" >
@@ -14,6 +14,12 @@
                 <li id="invoice_link">
                     <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=3">Đơn hàng</a>
                 </li>
+                <li id="product_type_link">
+                    <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=4">Loại sản phẩm</a>
+                </li>
+                <li id="manufacturer_link">
+                    <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=6">Nhà sản xuất</a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -24,10 +30,12 @@
     $("#show_menu").click(function(){
         can_open = !can_open;
         if(can_open){
-            $("#admin_menu").css("margin-left","0px");
+            $("#admin_menu").css("visibility","visible");
+            $("#admin_content").css("opacity","0.5");
         }
         else{
-            $("#admin_menu").css("margin-left","-200px");
+            $("#admin_menu").css("visibility","hidden");
+            $("#admin_content").css("opacity","1");
         }
     });
     $(function(){
@@ -43,11 +51,11 @@
                     &&
                     !$box.is(event.target) //checks if the $box itself was clicked
                 ) {
-                    $("#admin_menu").css("margin-left", "-200px");
+                    $("#admin_menu").css("visibility", "hidden");
+                    $("#admin_content").css("opacity","1");
                     can_open = false;
                 }
             }
         });
     });
-
 </script>

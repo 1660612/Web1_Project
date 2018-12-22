@@ -6,18 +6,20 @@
  * Time: 9:50 PM
  */
 ?>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Are you sure</h2>
-        </div>
-        <div class="modal-body">
-            <p class="confirm-delete">Are you sure you want to delete this user</p>
-        </div>
-        <div class="modal-footer">
-            <a id="user_id" href="./pages/user/"><button class="btn btn-danger">Yes</button></a>
-            <button id="not_agree" class="btn btn-warning">No</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this </p>
+            </div>
+            <div class="modal-footer">
+                <a id="id" href="#"><button class="btn btn-danger">Yes</button></a>
+                <button id="not_agree" data-dismiss="modal" class="btn">No</button>
+            </div>
         </div>
     </div>
 </div>

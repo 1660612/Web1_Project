@@ -19,64 +19,66 @@ foreach(glob("../../../../BUS/*.php") as $filename)
 {
     include $filename;
 }
-$user =  new User();
+$product =  new Product();
 if(isset($_GET['id']))
 {
-    echo $_SESSION['current_user_id'];
-    if($_SESSION['current_user_id'] != $_GET['id'])
-    {
-        $error = "Bạn không thể thay đổi thông tin của người dùng khác";
-        header("Location:../../index.php?a=2&error=$error");
-        exit();
-    }
-    $user->id = $_GET['id'];
+    $product->id = $_GET['id'];
 }
-if(isset($_POST['username']))
+if(isset($_POST['name']))
 {
-    $user->username = $_POST['username'];
-}
-if(isset($_POST['password']))
-{
-    $user->password = $_POST['password'];
-}
-if(isset($_POST['fullname']))
-{
-    $user->full_name = $_POST['fullname'];
+    $product->name = $_POST['name'];
 }
 
-if(isset($_FILES['avatar']))
+if(isset($_POST['receipt_date']))
 {
-    if(getimagesize($_FILES['avatar']['tmp_name']) == FALSE)
+    $product->receipt_date = $_POST['receipt_date'];
+}
+
+if(isset($_POST['total_sale_count']))
+{
+    $product->total_sale_count = $_POST['total_sale_count'];
+}
+
+if(isset($_POST['product_type_id']))
+{
+    $product->product_type_id = $_POST['product_type_id'];
+}
+
+if(isset($_POST['manufacturer_id']))
+{
+    $product->manufacturer_id = $_POST['manufacturer_id'];
+}
+if(isset($_FILES['image']))
+{
+    if(getimagesize($_FILES['image']['tmp_name']) == FALSE)
     {
         echo 'please choose an image';
     }
     else
     {
-        $image = addslashes($_FILES['avatar']['tmp_name']);
-        $name = addslashes($_FILES['avatar']['name']);
+        $image = addslashes($_FILES['image']['tmp_name']);
         $image = file_get_contents($image);
         $image = base64_encode($image);
-        $user->avatar =$image;
-        (new UserBUS())->Update($user);
+        $product->image =$image;
     }
 }
-if(isset($_POST['address']))
+
+if(isset($_POST['price']))
 {
-    $user->address = $_POST['address'];
+    $product->price = $_POST['price'];
 }
-if(isset($_POST['phone_number']))
+
+if(isset($_POST['description']))
 {
-    $user->phone_number = $_POST['phone_number'];
+    $product->description = $_POST['description'];
 }
-if(isset($_POST['email']))
+
+if(isset($_POST['product_source']))
 {
-    $user->email = $_POST['email'];
+    $product->product_source = $_POST['product_source'];
 }
-if(isset($_POST['role_id']))
-{
-    $user->role_id = $_POST['role_id'];
-}
-(new UserBUS())->Update($user);
-header("refresh: 0; url='../../index.php?a=2'");
+
+(new ProductBUS())->Update($product);
+header("refresh: 0; url='../../index.php?a=1'");
 
 ?>

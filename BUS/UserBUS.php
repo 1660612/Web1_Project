@@ -57,4 +57,9 @@ class UserBUS
     {
         return $this->userDAO->getRoleName($user_id);
     }
+
+    public function SearchByName($string_search)
+    {
+        return $this->userDAO->SearchByName($string_search);
+    }
 }

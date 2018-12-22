@@ -41,4 +41,9 @@ class ProductTypeBUS
     {
         $this->productTypeDAO->Update($product_type);
     }
+
+    public function SearchByName($product_type_name)
+    {
+        return $this->productTypeDAO->SearchByName($product_type_name);
+    }
 }

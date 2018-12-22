@@ -1,8 +1,15 @@
 <?php
 $invoices = (new InvoiceBUS)->GetAll();
 ?>
-<h2 style="display: inline-block;">Danh sách các đơn hàng</h2>
-<a class="float-right" href="./index.php?a=5&bus=invoice"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></a>
+<div class="row">
+    <h2 class="col-sm-5" style="display: inline-block;">Danh sách các đơn hàng</h2>
+    <div class="col-sm-6">
+        <?php
+            include("./layouts/search_form.php");
+        ?>
+    </div>
+    <a class="col-sm-1" href="./index.php?a=5&bus=invoice"><button class="btn btn-primary"><i class="fa fa-plus"></i></button></a>
+</div>
 <hr/>
 <div class="table-responsive">
     <table class="table w-75 d-table mx-auto">
@@ -36,33 +43,23 @@ $invoices = (new InvoiceBUS)->GetAll();
                     <td><?php echo $invoice->total_price; ?></td>
                     <td><?php echo (new InvoiceBUS())->getUserFullName($invoice->id); ?></td>
                     <td>
-                        <a href="./index.php?a=5&bus=invoice&id=<?php echo $invoice->id; ?>"><button class='btn btn-warning'><i class="fa fa-edit"></i></button></a>
-                        <button class='btn btn-danger' onclick='Load(<?php echo $invoice->id; ?>)'><i class="fa fa-trash-alt"></i></button>
+                        <a href="./index.php?a=5&bus=invoice&id=<?php echo $invoice->id; ?>"><button class='btn'><i class="fa fa-edit"></i></button></a>
+                        <button class='btn btn-danger' onclick='Load(<?php echo $invoice->id; ?>)' data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-alt"></i></button>
                     </td>
                 </tr>
-            <?php }}
-        ?>
+            <?php }}?>
         </tbody>
     </table>
 </div>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Are you sure</h2>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to delete this invoice</p>
-        </div>
-        <div class="modal-footer">
-            <a id="id" href="./pages/invoice/delete.php?id="><button class="btn btn-danger">Yes</button></a>
-            <button id="not_agree" class="btn btn-warning">No</button>
-        </div>
-    </div>
-
-</div>
+<?php
+    include("./layouts/khungxuly.php");
+?>
 <script>
     header_change("Đơn hàng", "./index.php?a=3");
     $(".active").removeClass("active");
     $("#invoice_link").addClass("active");
+    $("#search_form").append("<input type=\"hidden\" value=\"3\" name=\"a\" class=\"form-control col-10\" />");
+    $("h4.modal-title").append("Delete Invoice Confirm");
+    $("div.modal-body p").append("invoice?");
+    $("#id").attr("href", "./pages/invoice/delete.php?id=");
 </script>

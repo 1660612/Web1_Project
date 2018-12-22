@@ -55,4 +55,21 @@ class ProductTypeDAO extends DB
         $sql = "UPDATE product_types SET name = '$product_type->name' WHERE id = $product_type->id";
         $this->ExecuteQuery($sql);
     }
+
+    public function SearchByName($product_type_name)
+    {
+        $sql = "select id, name from product_types WHERE name LIKE '%$product_type_name%'";
+        $result = $this->ExecuteQuery($sql);
+        $product_types = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $product_type = new ProductType();
+            $product_type->id = $id;
+            $product_type->name = $name;
+            $product_types[] = $product_type;
+        }
+        return $product_types;
+    }
 }

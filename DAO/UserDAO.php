@@ -148,4 +148,30 @@ class UserDAO extends DB
         }
         return $roles;
     }
+
+    public function SearchByName($string_search)
+    {
+        $sql = "select id, username, password, avatar, full_name, address, phone_number, email, role_id from users WHERE username LIKE '%$string_search%' 
+                OR full_name LIKE '%$string_search%'";
+        $result = $this->ExecuteQuery($sql);
+        $users = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $user = new User();
+            $user->id = $id;
+            $user->username = $username;
+            $user->password = $password;
+            $user->avatar = $avatar;
+            $user->full_name = $full_name;
+            $user->address = $address;
+            $user->phone_number = $phone_number;
+            $user->email = $email;
+            $user->role_id = $role_id;
+            $users[] = $user;
+        }
+
+        return $users;
+    }
 }
