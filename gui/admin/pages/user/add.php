@@ -37,7 +37,7 @@ if(isset($_POST['username']))
 }
 if(isset($_POST['password']))
 {
-    $user->password = $_POST['password'];
+    $user->password = md5(sha1($_POST['password']));
 }
 if(isset($_POST['fullname']))
 {

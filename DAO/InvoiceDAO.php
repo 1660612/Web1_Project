@@ -101,4 +101,24 @@ class InvoiceDAO extends DB
 
         return $invoices;
     }
+
+    public function SearchByUserName($name)
+    {
+        $sql = "SELECT invoices.id, invoices.created_date, invoices.total_price, invoices.user_id FROM users, invoices WHERE users.id = invoices.user_id AND users.full_name LIKE '%$name%'";
+        $result = $this->ExecuteQuery($sql);
+        $invoices = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $invoice = new Invoice();
+            $invoice->id = $id;
+            $invoice->created_date = $created_date;
+            $invoice->total_price = $total_price;
+            $invoice->user_id = $user_id;
+            $invoices[] = $invoice;
+        }
+
+        return $invoices;
+    }
 }

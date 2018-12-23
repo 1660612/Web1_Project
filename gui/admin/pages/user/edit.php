@@ -23,12 +23,12 @@ $user =  new User();
 if(isset($_GET['id']))
 {
     echo $_SESSION['current_user_id'];
-    if($_SESSION['current_user_id'] != $_GET['id'])
-    {
-        $error = "Bạn không thể thay đổi thông tin của người dùng khác";
-        header("Location:../../index.php?a=2&error=$error");
-        exit();
-    }
+//    if($_SESSION['current_user_id'] != $_GET['id'])
+//    {
+//        $error = "Bạn không thể thay đổi thông tin của người dùng khác";
+//        header("Location:../../index.php?a=2&error=$error");
+//        exit();
+//    }
     $user->id = $_GET['id'];
 }
 if(isset($_POST['username']))

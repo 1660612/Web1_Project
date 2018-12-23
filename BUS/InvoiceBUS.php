@@ -51,4 +51,9 @@ class InvoiceBUS
     {
         return $this->invoiceDAO->GetTop10ByDate();
     }
+
+    public function SearchByUserName($name)
+    {
+        return $this->invoiceDAO->SearchByUserName($name);
+    }
 }

@@ -40,7 +40,7 @@
                     <td><a href="./index.php?a=1&id=<?php echo $product_type->id; ?>"><?php echo $product_type->name; ?></a></td>
                     <td>
                         <a href="./index.php?a=5&bus=product_type&id=<?php echo $product_type->id; ?>"><button class='btn'><i class="fa fa-edit"></i></button></a>
-                        <button class='btn btn-danger' onclick='Load(<?php echo $product_type->id; ?>)'><i class="fa fa-trash-alt"></i></button>
+                        <button class='btn btn-danger' onclick='Load(<?php echo $product_type->id; ?>)' data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-alt"></i></button>
                     </td>
                 </tr>
             <?php } } ?>
@@ -48,22 +48,9 @@
 
     </tbody>
 </table>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Are you sure</h2>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to delete this product type?</p>
-        </div>
-        <div class="modal-footer">
-            <a id="id" href="./pages/product_type/delete.php?id="><button class="btn btn-danger">Yes</button></a>
-            <button id="not_agree" class="btn btn-warning">No</button>
-        </div>
-    </div>
-
-</div>
+<?php
+    include("./layouts/khungxuly.php");
+?>
 <script>
     header_change("Sản phẩm", "./index.php?a=1");
     $(".active").removeClass("active");
@@ -74,4 +61,7 @@
         $("#search_form").submit();
     });
     $("#search_form").append("<input type=\"hidden\" value=\"4\" name=\"a\" class=\"form-control col-10\" />");
+    $("h4.modal-title").append("Delete Product Type Confirm");
+    $("div.modal-body p").append("product type?");
+    $("#id").attr("href", "./pages/product_type/delete.php?id=");
 </script>

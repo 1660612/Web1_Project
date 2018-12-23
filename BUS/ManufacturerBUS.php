@@ -41,4 +41,9 @@ class ManufacturerBUS
     {
         $this->manufacturerDAO->Update($manufacturer);
     }
+
+    public function SearchByName($manufacturer_name)
+    {
+        return $this->manufacturerDAO->SearchByName($manufacturer_name);
+    }
 }

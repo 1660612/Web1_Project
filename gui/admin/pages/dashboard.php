@@ -6,6 +6,14 @@
  * Time: 12:09 AM
  */
 ?>
+
+<?php
+$arr = array('11-01-2012', '01-01-2014', '01-01-2015', '09-02-2013', '01-01-2013');
+function date_sort($a, $b) {
+    return strtotime($a) - strtotime($b);
+}
+usort($arr, "date_sort");
+?>
 <canvas id="bar-chart" width="800" height="450"></canvas>
 <script>
     var startDate = new Date("2017-10-01"), endDate = new Date("2017-10-30");
@@ -23,7 +31,7 @@
             datasets: [
                 {
                     label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    backgroundColor: "#3e95cd",
                     data: [3,32,32,11,33]
                 }
             ]

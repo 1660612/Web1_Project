@@ -59,7 +59,52 @@ class ManufacturerDAO extends DB
 
     public function Update($manufacturer)
     {
-        $sql = "UPDATE manufacturers SET name = '$manufacturer->name', price = $manufacturer->price, phone_number = '$manufacturer->phone_number', address = '$manufacturer->address', logo = '$manufacturer->logo' WHERE id = $manufacturer->id";
-        $this->ExecuteQuery($sql);
+        if($manufacturer->name != '' && $manufacturer->name != null)
+        {
+            $sql = "UPDATE manufacturers SET name = '$manufacturer->name' WHERE id = $manufacturer->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($manufacturer->price != '' && $manufacturer->price != null)
+        {
+            $sql = "UPDATE manufacturers SET price = $manufacturer->price WHERE id = $manufacturer->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($manufacturer->phone_number != '' && $manufacturer->phone_number != null)
+        {
+            $sql = "UPDATE manufacturers SET phone_number = '$manufacturer->phone_number' WHERE id = $manufacturer->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($manufacturer->address != '' && $manufacturer->address != null)
+        {
+            $sql = "UPDATE manufacturers SET address = '$manufacturer->address' WHERE id = $manufacturer->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($manufacturer->logo != '' && $manufacturer->logo != null)
+        {
+            $sql = "UPDATE manufacturers SET logo = '$manufacturer->logo' WHERE id = $manufacturer->id";
+            $this->ExecuteQuery($sql);
+        }
     }
+
+    public function SearchByName($manufacturer_name)
+    {
+        $sql = "select id, name, phone_number, address, logo from manufacturers WHERE name LIKE '%$manufacturer_name%'";
+        $result = $this->ExecuteQuery($sql);
+        $manufacturers = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $manufacturer = new Manufacturer();
+            $manufacturer->id = $id;
+            $manufacturer->name = $name;
+            $manufacturer->phone_number = $phone_number;
+            $manufacturer->address = $address;
+            $manufacturer->logo = $logo;
+            $manufacturers[] = $manufacturer;
+        }
+
+        return $manufacturers;
+    }
+
 }

@@ -1,5 +1,9 @@
 <?php
 $invoices = (new InvoiceBUS)->GetAll();
+if(isset($_GET['q']))
+{
+    $invoices = (new InvoiceBUS())->SearchByUserName($_GET['q']);
+}
 ?>
 <div class="row">
     <h2 class="col-sm-5" style="display: inline-block;">Danh sách các đơn hàng</h2>

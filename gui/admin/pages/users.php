@@ -54,7 +54,7 @@
                     <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)' data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-alt"></i> </button>
                 </td>
             </tr>
-            <?php }}
+                <?php }}
                 ?>
     </tbody>
 </table>
