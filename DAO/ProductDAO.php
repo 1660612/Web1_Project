@@ -166,4 +166,85 @@ $product->manufacturer_id, '$product->image', $product->price, $product->view_co
         $row=mysqli_fetch_array($result);
         return $row[0];
     }
+
+    public function GetTop10ByDate()
+    {
+        $sql = "select id, name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, description, product_source from products ORDER BY receipt_date DESC LIMIT 10";
+        $result = $this->ExecuteQuery($sql);
+        $products = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $product = new Product();
+            $product->id = $id ;
+            $product->name = $name ;
+            $product->receipt_date = $receipt_date ;
+            $product->total_sale_count = $total_sale_count ;
+            $product->product_type_id = $product_type_id ;
+            $product->manufacturer_id = $manufacturer_id ;
+            $product->image = $image ;
+            $product->price = $price ;
+            $product->view_count = $view_count ;
+            $product->description = $description ;
+            $product->product_source = $product_source ;
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+
+    public function GetProductsByProductType($product_type_id)
+    {
+        $sql = "select id, name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, description, product_source from products WHERE product_type_id = $product_type_id";
+        $result = $this->ExecuteQuery($sql);
+        $products = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $product = new Product();
+            $product->id = $id ;
+            $product->name = $name ;
+            $product->receipt_date = $receipt_date ;
+            $product->total_sale_count = $total_sale_count ;
+            $product->product_type_id = $product_type_id ;
+            $product->manufacturer_id = $manufacturer_id ;
+            $product->image = $image ;
+            $product->price = $price ;
+            $product->view_count = $view_count ;
+            $product->description = $description ;
+            $product->product_source = $product_source ;
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+
+    public function GetProductsByManufacturer($manufacturer_id)
+    {
+        $sql = "select id, name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, description, product_source from products WHERE manufacturer_id = $manufacturer_id";
+        $result = $this->ExecuteQuery($sql);
+        $products = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $product = new Product();
+            $product->id = $id ;
+            $product->name = $name ;
+            $product->receipt_date = $receipt_date ;
+            $product->total_sale_count = $total_sale_count ;
+            $product->product_type_id = $product_type_id ;
+            $product->manufacturer_id = $manufacturer_id ;
+            $product->image = $image ;
+            $product->price = $price ;
+            $product->view_count = $view_count ;
+            $product->description = $description ;
+            $product->product_source = $product_source ;
+            $products[] = $product;
+        }
+
+        return $products;
+    }
 }

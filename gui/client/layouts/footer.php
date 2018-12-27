@@ -6,7 +6,7 @@
  * Time: 11:31 AM
  */
 ?>
-<div id="Footer">
+<div id="Footer" class="d-block">
     <div id="footer1">
         <p>Thương Hiệu Thời Trang Việt Nam</p>
         <p>Email:info@Gmail.com</p>

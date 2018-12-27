@@ -50,7 +50,7 @@
                 <td><?php echo $user->phone_number; ?></td>
                 <td><?php echo $user->email; ?></td>
                 <td>
-                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn'><i class="fa fa-edit"></i></button></a>
+                    <a href="./index.php?a=5&bus=user&id=<?php echo $user->id ?>"><button class='btn'><i class="fa fa-user-edit"></i></button></a>
                     <button class='btn btn-danger' onclick='Load(<?php echo $user->id; ?>)' data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-alt"></i> </button>
                 </td>
             </tr>

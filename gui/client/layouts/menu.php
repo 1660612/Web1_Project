@@ -13,17 +13,17 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
         <div id="divLeft">
             <ul type="none">
                 <li><a href="./index.php">Trang Chủ</a></li>
-                <li><a href="./Trangao/ao.html">Loại sản phẩm</a>
+                <li><a href="">Loại sản phẩm</a>
                     <ul type="none">
                         <?php foreach($product_types as $pt){ ?>
-                            <li><a href="./Trangao/aotaydai.html"><?php echo $pt->name; ?></a></li>
+                            <li><a href="./index.php?bus=product&id=<?php echo $pt->id; ?>"><?php echo $pt->name; ?></a></li>
                         <?php } ?>
                     </ul>
                 </li>
                 <li><a href="./Trangquan/quan.html">Nhà sản xuất</a>
                     <ul type="none">
                         <?php foreach($manufacturers as $manufacturer){ ?>
-                            <li><a href="./Trangao/aotaydai.html"><?php echo $manufacturer->name; ?></a></li>
+                            <li><a href="./index.php?bus=manufacturer&id=<?php echo $manufacturer->id; ?>"><?php echo $manufacturer->name; ?></a></li>
                         <?php } ?>
                     </ul>
                 </li>

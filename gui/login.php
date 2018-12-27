@@ -28,7 +28,7 @@ foreach(glob("../BUS/*.php") as $filename)
         foreach($users as $user_check_login)
         {
             if($user_check_login->username == $_POST['user_name']
-                && $user_check_login->password == $_POST['password'])
+                && $user_check_login->password == md5(sha1($_POST['password'])))
             {
                 $_SESSION['current_user_id'] = $user_check_login->id;
             }
@@ -43,7 +43,7 @@ foreach(glob("../BUS/*.php") as $filename)
             exit();
         }
         else {
-            header("refresh:0; url=./index.php");
+            header("refresh:0; url=./client/index.php");
             exit();
         }
     }
@@ -55,15 +55,45 @@ foreach(glob("../BUS/*.php") as $filename)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+
+    <!-- jQuery library -->
+    <script src="./js/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="./js/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="../img/admin.png" />
+    <script src="./js/javascript.js"></script>
+    <style>
+        #login{
+            width: 390px;
+        }
+    </style>
 </head>
 <body>
-    <form id="login_form" action="" method="post">
-        <h2 id="login-header" class="text-center">Login Form</h2>
-        <hr/>
-        <label class="display-block float-left label-form">User Name: </label><input class="display-block" type="text" name="user_name" placeholder="Enter user name..." />
-        <label class="display-block float-left label-form">Password: </label><input class="display-block" type="password" name="password" placeholder="Enter password..." />
-        <input class="btn btn-submit" type="submit" value="Login" style="margin-left: 130px;height: 38px; margin-top: 10px;" />
-    </form>
+    <div id="login" class="w-25 mx-auto mt-5">
+        <form id="login_form" action="" method="post">
+            <h2 id="login-header" class="text-center">Login Form</h2>
+            <hr/>
+            <div class="form-group row">
+                <label class="col-sm-4">User Name: </label>
+                <input type="text" name="user_name" class="form-control col-sm-8" placeholder="Enter user name..."/>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4">Mật khẩu:</label>
+                <input type="password" name="password" class="form-control col-sm-8" placeholder="Nhập mật khẩu..."/>
+            </div>
+            <div class="text-center">
+                <a href="./register.php" class="btn btn-info">Đăng ký</a>
+                <input class="btn btn-primary" type="submit" value="Đăng nhập" />
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -97,10 +97,6 @@ a{
     padding:0;
     border-bottom: solid 1px #DAD9D9;
 }
-#Container{
-    width: 1300px;
-    margin: 0 auto;
-}
 #Menu{
     background: #aaffaa;
     width: 100%;
@@ -216,10 +212,6 @@ div ul li:hover ul{
 }
 #SanPham{
     float:left;
-}
-#Content {
-    height: 880px;
-    margin-left: 80px;
 }
 
 
