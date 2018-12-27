@@ -77,4 +77,10 @@ class ProductBUS
     {
         return $this->productDAO->GetProductsByManufacturer($manufacturer_id);
     }
+
+    public function GetProductsByName($product_name)
+    {
+        return $this->productDAO->GetProductsByName($product_name);
+
+    }
 }

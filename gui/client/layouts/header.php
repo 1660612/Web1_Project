@@ -17,7 +17,8 @@
         }
         elseif(isset($_SESSION['current_user_id']) == true)
         {
-            echo "<a href='../logout.php' class=\"btn btn-dark text-white\" style=\"height: 40px;\">Đăng xuất</a>";
+            $current_id = $_SESSION['current_user_id'];
+            echo "<a href='./index.php?a=3&id=$current_id' class=\"btn btn-dark text-white\" style=\"height: 40px;\">Edit Profile</a><a href='../logout.php' class=\"btn btn-dark text-white\" style=\"height: 40px;\">Đăng xuất</a>";
         }
         ?>
     </div>
@@ -31,7 +32,7 @@
         ?>
         <div class="col-sm-1">
             <div id="icon-card">
-                <a href="#" >
+                <a href="./index.php?a=2" >
                     <img src="../img/Slide/giohang.png" height="30px" width="30px" style="margin-top:4px"/>
                     <p>Giỏ Hàng</p>
                 </a>

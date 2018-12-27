@@ -30,17 +30,17 @@ foreach(glob("BUS/*.php") as $filename)
 </head>
 <body>
     <?php
-        if(!isset($_SESSION['user_id']))
+        if(!isset($_SESSION['current_user_id']))
         {
-            echo 'Redirect to page bán hàng';
-            ?>
-            <a href="./GUI/login.php">Login</a>
-
-            <?php
+            header("location: ./GUI/client/index.php");
         }
-        else if(isset($_SESSION['user_id']) && UserDAO::is_admin() == true)
+        elseif(isset($_SESSION['current_user_id']) && (new UserBUS())->is_admin($_SESSION['current_user_id']) == true)
         {
-            echo 'Redirect to admin page';
+            header("location: ./GUI/admin/index.php");
+        }
+        elseif(isset($_SESSION['current_user_id']) && (new UserBUS())->is_admin($_SESSION['current_user_id']) == false)
+        {
+            header("location: ./GUI/admin/index.php");
         }
     ?>
 </body>

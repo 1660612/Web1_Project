@@ -40,7 +40,7 @@
             {
             ?>
                 <tr>
-                    <td><a href="./index.php?a=1&id=<?php echo $product->id; ?>"><?php echo $product->name; ?></a></td>
+                    <td style="max-width: 150px;"><?php echo $product->name; ?></td>
                     <td id="money"><?php echo $product->price; ?></td>
                     <td><?php echo $product->description; ?></td>
                     <td><?php echo (new ProductBUS())->GetProductTypeName($product->id); ?></td>

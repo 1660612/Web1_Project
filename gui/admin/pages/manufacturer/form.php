@@ -6,7 +6,11 @@
  * Time: 4:47 PM
  */
 ?>
-
+<?php
+if(isset($_GET['id'])){
+    $manufacturer = (new ManufacturerBUS())->GetByID($_GET['id']);
+}
+?>
 <div class="w-50 mx-auto">
     <h2 class="text-center" style="margin-bottom: 20px; margin-top: 20px;">
         <?php
@@ -16,15 +20,15 @@
     <form id="form" method="post" enctype="multipart/form-data" action="./pages/manufacturer/<?php echo isset($_GET['id']) ? $action = 'edit.php?id='.$_GET['id'] : $action = 'add.php'; ?>" autocomplete="off">
         <div class="form-group row">
             <label class="col-sm-4">Tên hãng sản xuất:</label>
-            <input type="text" name="name" class="form-control col-sm-8" placeholder="Nhập tên hãng sản xuất..."/>
+            <input type="text" name="name" class="form-control col-sm-8" placeholder="Nhập tên hãng sản xuất..." value="<?php echo isset($manufacturer) ? $manufacturer->name : "" ?>"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-4">Số điện thoại:</label>
-            <input type="text" name="phone_number" class="form-control col-sm-8" placeholder="Nhập số điện thoại..."/>
+            <input type="text" name="phone_number" class="form-control col-sm-8" placeholder="Nhập số điện thoại..." value="<?php echo isset($manufacturer) ? $manufacturer->phone_number : "" ?>"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-4">Địa chỉ:</label>
-            <input type="text" name="address" class="form-control col-sm-8" placeholder="Nhập địa chỉ..."/>
+            <input type="text" name="address" class="form-control col-sm-8" placeholder="Nhập địa chỉ..." value="<?php echo isset($manufacturer) ? $manufacturer->address : "" ?>"/>
         </div>
         <div class="form-group row">
             <label class="col-sm-4">Logo:</label>

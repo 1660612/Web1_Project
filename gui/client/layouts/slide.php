@@ -75,7 +75,6 @@
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img src="../img/slide/slide-1.jpg" style="width:100%">
-
             </div>
 
             <div class="mySlides fade">
@@ -117,8 +116,8 @@
             if (slideIndex > slides.length - 1) {
                 slideIndex = 0
             }
-            //tự động chuyển đổi slide sau 5s
-            setTimeout(showSlides, 5000);
+            //tự động chuyển đổi slide sau 2s
+            setTimeout(showSlides, 2000);
         }
         //mặc định hiển thị slide đầu tiên
         showSlides(slideIndex = 0);

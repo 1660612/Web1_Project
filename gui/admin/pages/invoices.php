@@ -21,7 +21,7 @@ if(isset($_GET['q']))
         <tr>
             <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>
             <th class="arrow-down" onclick="sortTable(1, this)">Tổng thành tiền</th>
-            <th class="arrow-down" onclick="sortTable(2, this)">Tài khoản</th>
+            <th class="arrow-down" onclick="sortTable(2, this)">Khách hàng</th>
             <th>Hành động</th>
         </tr>
         </thead>

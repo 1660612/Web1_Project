@@ -17,6 +17,12 @@ foreach(glob("../BUS/*.php") as $filename)
 {
     include $filename;
 }
+$user_role_id = "";
+$roles = (new RoleBUS())->GetAll();
+foreach($roles as $role)
+{
+    $user_role_id = $role->name == "User" ? "$role->id" : "";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +48,7 @@ foreach(glob("../BUS/*.php") as $filename)
     <script src="./js/javascript.js"></script>
     <style>
         #register{
-            width: 390px;
+            width: 500px;
         }
     </style>
     <script>
@@ -61,10 +67,10 @@ foreach(glob("../BUS/*.php") as $filename)
 </head>
 <body>
 <div id="register" class="mx-auto">
-    <h2 class="text-center font-weight-bold display-6 text-info" style="margin-bottom: 20px; margin-top: 20px;">
-        Đăng ký
-    </h2>
-    <form id="form" class="w-100" method="post" enctype="multipart/form-data" action="./create_user.php" autocomplete="off" style="width:355px;">
+    <form class="w-100" method="post" enctype="multipart/form-data" action="./create_user.php" autocomplete="off" style="width:355px;">
+        <h2 class="text-center font-weight-bold display-6 text-info" style="margin-bottom: 20px; margin-top: 20px;">
+            Đăng ký
+        </h2>
         <div class="form-group row">
             <label class="col-sm-4">Tên đăng nhập:</label>
             <input type="text" name="username" class="form-control col-sm-8" onkeypress="error_delete('username_error')" placeholder="Nhập tên tài khoản..."/>
@@ -104,15 +110,16 @@ foreach(glob("../BUS/*.php") as $filename)
             <input type="text" name="email" class="form-control col-sm-8" placeholder="Nhập email..."/>
         </div>
         <div class="form-group row">
-            <input type="hidden" name="role_id" value="3" class="form-control col-sm-8" placeholder="Nhập email..."/>
+            <input type="hidden" name="role_id" value="<?php echo $user_role_id; ?>" class="form-control col-sm-8" placeholder="Nhập email..."/>
         </div>
         <div class="text-center">
             <input class="btn btn-primary" type="submit" name="submit" value="Submit" />
+            <div class="text-center mt-2 mb-5">
+                <small class="text-info">Bạn đã có tài khoản <a href="./login.php" class="btn btn-sm btn-info">Đăng nhập</a></small>
+            </div>
         </div>
     </form>
-    <div class="text-center mt-2">
-        <small class="text-info">Bạn đã có tài khoản <a href="./login.php" class="btn btn-sm btn-info">Đăng nhập</a></small>
-    </div>
+
 </div>
 </body>
 </html>

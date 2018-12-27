@@ -39,9 +39,9 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
         <div id="divRight">
             <div>
                 <div id="form">
-                    <form action="#" method="GET" >
-                        <input id="bt" type="text" name="txtTimkiem" placeholder="Nhập Sản Phẩm Cần Tìm..." style="margin-right: -5px;" />
-                        <input id="tk" type="button" value="Tìm Kiếm"> </input>
+                    <form action="./index.php" method="GET" >
+                        <input id="bt" type="text" name="q" placeholder="Nhập Sản Phẩm Cần Tìm..." style="margin-right: -5px;" />
+                        <input id="tk" type="submit" value="Tìm Kiếm" />
                     </form>
                 </div>
             </div>

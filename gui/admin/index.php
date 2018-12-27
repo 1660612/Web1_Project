@@ -109,11 +109,11 @@ foreach(glob("../../BUS/*.php") as $filename)
             var height = $("#admin_content").height();
             if(height > $(window).height())
             {
-                $("#admin_menu").css("height", height+100);
+                $("#admin_menu").css("height", height+200);
             }
             else
             {
-                $("#admin_menu").css("height", $(window).height()+100);
+                $("#admin_menu").css("height", $(window).height()+200);
             }
         </script>
     </body>

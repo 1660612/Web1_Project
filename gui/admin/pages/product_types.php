@@ -37,7 +37,7 @@
             ?>
                 <tr>
                     <td><?php echo $product_type->id; ?></td>
-                    <td><a href="./index.php?a=1&id=<?php echo $product_type->id; ?>"><?php echo $product_type->name; ?></a></td>
+                    <td><?php echo $product_type->name; ?></td>
                     <td>
                         <a href="./index.php?a=5&bus=product_type&id=<?php echo $product_type->id; ?>"><button class='btn'><i class="fa fa-edit"></i></button></a>
                         <button class='btn btn-danger' onclick='Load(<?php echo $product_type->id; ?>)' data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-alt"></i></button>

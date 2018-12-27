@@ -8,31 +8,37 @@
 ?>
 
 <?php
-$arr = array('11-01-2012', '01-01-2014', '01-01-2015', '09-02-2013', '01-01-2013');
-function date_sort($a, $b) {
-    return strtotime($a) - strtotime($b);
-}
-usort($arr, "date_sort");
+    $arr = array();
+    $data = array();
+    $invoices = (new InvoiceBUS())->GetAll();
+    foreach ($invoices as $invoice)
+    {
+        $arr[] = $invoice->created_date;
+        $data[] = $invoice->total_price;
+    }
 ?>
 <canvas id="bar-chart" width="800" height="450"></canvas>
 <script>
-    var startDate = new Date("2017-10-01"), endDate = new Date("2017-10-30");
-    var arr = new Array(), dt = new Date(startDate);
+    var arr = new Array();
+    arr = <?php echo json_encode($arr); ?>;
+    var data1 = new Array();
+    data1 = <?php echo json_encode($data); ?>;
+    var date_sort_asc = function (date1, date2) {
+        if (date1 > date2) return 1;
+        if (date1 < date2) return -1;
+        return 0;
+    };
+    arr = arr.sort(date_sort_asc);
 
-    while (dt <= endDate) {
-        arr.push(new Date(dt).toLocaleDateString());
-        dt.setDate(dt.getDate() + 1);
-    }
-    console.log(arr);
     new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
-            labels: [new Date('2018/12/18').toLocaleDateString(), new Date('2018/12/21').toLocaleDateString(), new Date('2018/12/22').toLocaleDateString(), new Date('2018/12/24').toLocaleDateString(), new Date('2018/12/25').toLocaleDateString()],
+            labels: arr,
             datasets: [
                 {
                     label: "Population (millions)",
                     backgroundColor: "#3e95cd",
-                    data: [3,32,32,11,33]
+                    data: data1,
                 }
             ]
         },
@@ -41,13 +47,6 @@ usort($arr, "date_sort");
             title: {
                 display: true,
                 text: 'Thống kê doanh thu (VND) trong từ ngày đền ngày'
-            },
-            scales: {
-                xAxes: [{
-                    barPercentage: 1,
-                    categoryPercentage: 1,
-
-                }]
             }
         }
     });

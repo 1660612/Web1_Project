@@ -1,3 +1,8 @@
+<?php
+if(isset($_GET['id'])){
+    $invoice = (new InvoiceBUS())->GetByID($_GET['id']);
+}
+?>
 <div class="w-50 mx-auto">
     <h2 class="text-center" style="margin-bottom: 20px; margin-top: 20px;">
         <?php
@@ -11,13 +16,17 @@
         </div>
         <div class="form-group row">
             <label class="col-sm-4">Tổng giá trị:</label>
-            <input type="text" name="total_price" class="col-sm-8 form-control"/>
+            <input type="text" name="total_price" class="col-sm-8 form-control" value="<?php echo isset($invoice) ? $invoice->total_price : "" ?>"/>
         </div>
         <div class="form-group row">
-            <label class="col-sm-4">Người tạo:</label>
+            <label class="col-sm-4">Khách hàng:</label>
             <select name="user_id" class="col-sm-8 form-control">
-                <option value="" selected>Select 1 user</option>
-                <?php foreach((new UserBUS())->GetAll() as $user) echo "<option value='$user->id'>$user->full_name</option>"; ?>
+                <option value="">Select 1 user</option>
+                <?php foreach((new UserBUS())->GetAll() as $user){?>
+                <option value="<?php echo $user->id; ?>" <?php if(isset($invoice)){ echo $user->id == $invoice->user_id ? "selected" : "";} ?>>
+                    <?php echo $user->full_name; ?>
+                </option>
+                <?php } ?>
             </select>
         </div>
         <div class="text-center">

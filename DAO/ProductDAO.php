@@ -274,4 +274,31 @@ $product->manufacturer_id, '$product->image', $product->price, $product->view_co
 
         return $products;
     }
+
+    public function GetProductsByName($product_name)
+    {
+        $sql = "select id, name, receipt_date, total_sale_count, product_type_id, manufacturer_id, image, price, view_count, description, product_source from products WHERE name LIKE '%$product_name%'";
+        $result = $this->ExecuteQuery($sql);
+        $products = array();
+        while($row=mysqli_fetch_array($result))
+        {
+            extract($row);
+
+            $product = new Product();
+            $product->id = $id ;
+            $product->name = $name ;
+            $product->receipt_date = $receipt_date ;
+            $product->total_sale_count = $total_sale_count ;
+            $product->product_type_id = $product_type_id ;
+            $product->manufacturer_id = $manufacturer_id ;
+            $product->image = $image ;
+            $product->price = $price ;
+            $product->view_count = $view_count ;
+            $product->description = $description ;
+            $product->product_source = $product_source ;
+            $products[] = $product;
+        }
+
+        return $products;
+    }
 }

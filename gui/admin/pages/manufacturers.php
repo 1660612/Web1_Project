@@ -47,7 +47,7 @@ if(isset($_GET['q']))
             ?>
             <tr>
 
-                <td><a href="./index.php?a=1&id=<?php echo $manufacturer->id; ?>"><?php echo $manufacturer->name; ?></a></td>
+                <td><?php echo $manufacturer->name; ?></td>
                 <td><?php echo $manufacturer->phone_number; ?></td>
                 <td><?php echo $manufacturer->address; ?></td>
                 <td>

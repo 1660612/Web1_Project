@@ -32,7 +32,7 @@ if(isset($_POST['receipt_date']))
     $product->receipt_date = $_POST['receipt_date'];
 }
 
-if(isset($_POST['total_sale_count']))
+if(isset($_POST['total_sale_count']) && $_POST['total_sale_count'] != '')
 {
     $product->total_sale_count = $_POST['total_sale_count'];
 }

@@ -24,7 +24,7 @@ class Product
     {
         $this->id = 0;
         $this->name = "";
-        $this->receipt_date = "";
+        $this->receipt_date = getdate();
         $this->total_sale_count = 0;
         $this->product_type_id = 0;
         $this->manufacturer_id = 0;
