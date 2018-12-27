@@ -27,7 +27,7 @@ usort($arr, "date_sort");
     new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
-            labels: arr,
+            labels: [new Date('2018/12/18').toLocaleDateString(), new Date('2018/12/21').toLocaleDateString(), new Date('2018/12/22').toLocaleDateString(), new Date('2018/12/24').toLocaleDateString(), new Date('2018/12/25').toLocaleDateString()],
             datasets: [
                 {
                     label: "Population (millions)",
@@ -41,6 +41,13 @@ usort($arr, "date_sort");
             title: {
                 display: true,
                 text: 'Thống kê doanh thu (VND) trong từ ngày đền ngày'
+            },
+            scales: {
+                xAxes: [{
+                    barPercentage: 1,
+                    categoryPercentage: 1,
+
+                }]
             }
         }
     });

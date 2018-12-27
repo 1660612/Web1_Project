@@ -13,7 +13,7 @@ a{
     border-bottom: solid 1px #DAD9D9;
 }
 #Container{
-    width: 1170px;
+    /*width: 1170px;*/
     margin: 0 auto;
 }
 #Menu{
