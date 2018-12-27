@@ -38,6 +38,7 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
                         <input id="tk" type="button" value="Tìm Kiếm"> </input>
                     </form>
                 </div>
+                <a href="#" class="btn btn-primary" style="margin-top: 10px;">Tìm kiếm nâng cao</a>
             </div>
         </div>
     </div>

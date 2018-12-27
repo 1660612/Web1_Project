@@ -110,7 +110,7 @@ a{
     border-bottom: solid 1px #DAD9D9;
 }
 #form{
-    float: right;
+    float: left;
     color: black;
     margin-top: 3px;
     margin-right: 100px;
@@ -148,13 +148,13 @@ a{
     padding:9px;
 }
 #divLeft{
-    width: 70%;
+    width: 50%;
     float: left;
     background: #aaffaa;
     line-height: 77px;
 }
 #divRight{
-    width: 30%;
+    width: 50%;
     float: left;
     background: #aaffaa;
     margin-top: 13px;

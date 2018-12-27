@@ -6,7 +6,7 @@
  * Time: 11:31 AM
  */
 ?>
-<div id="Footer">
+<div id="Footer" class="text-white font-weight-bold">
     <div id="footer1">
         <p>Thương Hiệu Thời Trang Việt Nam</p>
         <p>Email:info@Gmail.com</p>
@@ -18,15 +18,16 @@
         <p>Chi nhánh 2: Tầng 69 tòa nhà Bitexco, Quận 1,HCM </p>
         <p>Chi nhánh 3: Tầng 81 tòa nhà Landmark, Quận 1,HCM </p>
     </div>
-    <div id="footer3">
-        <p>
-            &#169 Bản Quyền thuộc về công ty trách nhiệm hữu hạn 3 thành viên.
-        </p>
+    <div class="text-center">
+        <div id="footer3">
+            <p>
+                &#169 Bản Quyền thuộc về công ty trách nhiệm hữu hạn 2 thành viên.
+            </p>
+        </div>
+        <div >
+            <p>
+                &spades; Designer by Quách Đình Tiến, Đỗ Bá Tú &spades;
+            </p>
+        </div>
     </div>
-    <div >
-        <p>
-            &spades; Designer by Quách Đình Tiến, Đỗ Bá Tú, Hoàng Tuấn  &spades;
-        </p>
-    </div>
-
 </div>
