@@ -62,10 +62,16 @@ class ProductBUS
         return $this->productDAO->GetTop10ByDate();
     }
 
+    public function GetTop10ByTotalSale()
+    {
+        return $this->productDAO->GetTop10ByTotalSale();
+    }
+
     public function GetProductsByProductType($product_type_id)
     {
         return $this->productDAO->GetProductsByProductType($product_type_id);
     }
+
 
     public function GetProductsByManufacturer($manufacturer_id)
     {

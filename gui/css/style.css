@@ -144,10 +144,10 @@ a{
     padding:9px;
 }
 #divLeft{
-    width: 70%;
+    width: 50%;
     float: left;
     background: #aaffaa;
-    line-height: 77px;
+    padding-top: 20px;
 }
 #divRight{
     width: 30%;
@@ -181,12 +181,6 @@ div ul li:hover ul{
 #Footer{
     background: #7f7f7f;
     padding:1px;
-}
-
-
-#Content{
-
-    height: 1000px;
 }
 #Footer div p{
     font-size:17px;

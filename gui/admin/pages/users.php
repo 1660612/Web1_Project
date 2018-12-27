@@ -66,7 +66,7 @@
     $(".active").removeClass("active");
     $("#user_link").addClass("active");
     $("#search_form").append("<input type=\"hidden\" value=\"2\" name=\"a\" class=\"form-control col-10\" />");
-    $("h4.modal-title").append("Delete User Confirm");
-    $("div.modal-body p").append("user?");
+    $("h4.modal-title").append("Xác nhận xóa người dùng");
+    $("div.modal-body p").append("người dùng?");
     $("#id").attr("href", "./pages/user/delete.php?id=");
 </script>

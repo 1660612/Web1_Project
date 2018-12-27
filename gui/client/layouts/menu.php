@@ -13,17 +13,23 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
         <div id="divLeft">
             <ul type="none">
                 <li><a href="./index.php">Trang Chủ</a></li>
-                <li><a href="">Loại sản phẩm</a>
-                    <ul type="none">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Loại sản phẩm
+                    </a>
+                    <ul class="dropdown-menu">
                         <?php foreach($product_types as $pt){ ?>
-                            <li><a href="./index.php?bus=product&id=<?php echo $pt->id; ?>"><?php echo $pt->name; ?></a></li>
+                            <li class="dropdown-item"><a href="./index.php?bus=product&id=<?php echo $pt->id; ?>"><?php echo $pt->name; ?></a></li>
                         <?php } ?>
                     </ul>
                 </li>
-                <li><a href="./Trangquan/quan.html">Nhà sản xuất</a>
-                    <ul type="none">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Nhà sản xuất
+                    </a>
+                    <ul class="dropdown-menu">
                         <?php foreach($manufacturers as $manufacturer){ ?>
-                            <li><a href="./index.php?bus=manufacturer&id=<?php echo $manufacturer->id; ?>"><?php echo $manufacturer->name; ?></a></li>
+                            <li class="dropdown-item"><a href="./index.php?bus=manufacturer&id=<?php echo $manufacturer->id; ?>"><?php echo $manufacturer->name; ?></a></li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -39,6 +45,9 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
                     </form>
                 </div>
             </div>
+        </div>
+        <div style="width: 20%;" class="d-block float-left">
+            <a href="./index.php?query=timkiemnangcao" class="btn btn-secondary" style="margin-top: 16px; height: 46px;">Tìm kiếm nâng cao</a>
         </div>
     </div>
 </div>

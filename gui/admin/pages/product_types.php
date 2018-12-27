@@ -61,7 +61,7 @@
         $("#search_form").submit();
     });
     $("#search_form").append("<input type=\"hidden\" value=\"4\" name=\"a\" class=\"form-control col-10\" />");
-    $("h4.modal-title").append("Delete Product Type Confirm");
-    $("div.modal-body p").append("product type?");
+    $("h4.modal-title").append("Xác nhận xóa loại sản phẩm");
+    $("div.modal-body p").append("loại sản phẩm?");
     $("#id").attr("href", "./pages/product_type/delete.php?id=");
 </script>

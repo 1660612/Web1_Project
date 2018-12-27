@@ -71,7 +71,7 @@ include("./layouts/khungxuly.php");
         $("#search_form").submit();
     });
     $("#search_form").append("<input type=\"hidden\" value=\"6\" name=\"a\" class=\"form-control col-10\" />");
-    $("h4.modal-title").append("Delete Manufacturer Confirm");
-    $("div.modal-body p").append("manufacturer?");
+    $("h4.modal-title").append("Xác nhận xóa nhà sản xuất");
+    $("div.modal-body p").append("nhà sản xuất?");
     $("#id").attr("href", "./pages/manufacturer/delete.php?id=");
 </script>

@@ -63,7 +63,7 @@ if(isset($_GET['q']))
     $(".active").removeClass("active");
     $("#invoice_link").addClass("active");
     $("#search_form").append("<input type=\"hidden\" value=\"3\" name=\"a\" class=\"form-control col-10\" />");
-    $("h4.modal-title").append("Delete Invoice Confirm");
-    $("div.modal-body p").append("invoice?");
+    $("h4.modal-title").append("Xác nhận xóa đơn hàng");
+    $("div.modal-body p").append("đơn hàng?");
     $("#id").attr("href", "./pages/invoice/delete.php?id=");
 </script>
