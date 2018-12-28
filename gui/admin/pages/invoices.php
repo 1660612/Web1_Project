@@ -19,9 +19,10 @@ if(isset($_GET['q']))
     <table class="table w-75 d-table mx-auto">
         <thead >
         <tr>
-            <th class="arrow-down" onclick="sortTable(0, this)">Ngày lập</th>
-            <th class="arrow-down" onclick="sortTable(1, this)">Tổng thành tiền</th>
-            <th class="arrow-down" onclick="sortTable(2, this)">Khách hàng</th>
+            <th class="arrow-down" onclick="sortTable(0, this)">Mã đơn hàng</th>
+            <th class="arrow-down" onclick="sortTable(1, this)">Ngày lập</th>
+            <th class="arrow-down" onclick="sortTable(2, this)">Tổng thành tiền</th>
+            <th class="arrow-down" onclick="sortTable(3, this)">Khách hàng</th>
             <th>Hành động</th>
         </tr>
         </thead>
@@ -30,7 +31,7 @@ if(isset($_GET['q']))
         <?php
         if(count($invoices) == 0)
         {
-            echo "<td colspan='4'>Không có đơn hàng nào để hiển thị</td>";
+            echo "<td colspan='5'>Không có đơn hàng nào để hiển thị</td>";
         }
 
         else
@@ -40,6 +41,7 @@ if(isset($_GET['q']))
                 ?>
                 <tr>
                     <?php  ?>
+                    <td><?php echo $invoice->id; ?></td>
                     <td>
                         <?php $date = new DateTime($invoice->created_date);
                         echo $date->format('Y-m-d'); ?>

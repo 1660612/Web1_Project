@@ -61,6 +61,8 @@ class UserDAO extends DB
 
     public function Delete($user)
     {
+        $sql = "DELETE FROM invoices WHERE invoices.user_id = $user->id";
+        $this->ExecuteQuery($sql);
         $sql = "DELETE FROM users WHERE id = $user->id";
         $this->ExecuteQuery($sql);
     }
@@ -126,12 +128,10 @@ class UserDAO extends DB
         $row = mysqli_fetch_array($result);
         if($row == null)
         {
-            echo "chua ton tai";
             return false;
         }
         elseif($row != null)
         {
-            echo "da ton tai";
             return true;
         }
     }

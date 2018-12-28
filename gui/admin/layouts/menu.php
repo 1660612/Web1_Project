@@ -20,6 +20,9 @@
                 <li id="manufacturer_link">
                     <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=6">Nhà sản xuất</a>
                 </li>
+                <li id="invoice_item_link">
+                    <a class="mb-2 d-inline-block text-center w-100 h-100" href="./index.php?a=7">Chi tiết đơn hàng</a>
+                </li>
             </ul>
         </nav>
     </div>

@@ -39,6 +39,11 @@ class InvoiceItemBUS
 
     public function Update($invoice_item)
     {
-        $this->loaiSanPhamDAO->Update($invoice_item);
+        $this->invoiceItemDAO->Update($invoice_item);
+    }
+
+    public function GetProductName($id)
+    {
+        return $this->invoiceItemDAO->GetProductName($id);
     }
 }

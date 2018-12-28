@@ -46,6 +46,8 @@ class ProductTypeDAO extends DB
 
     public function Delete($product_type)
     {
+        $sql = "DELETE FROM products WHERE products.product_type_id = $product_type->id";
+        $this->ExecuteQuery($sql);
         $sql = "DELETE FROM product_types WHERE id = $product_type->id";
         $this->ExecuteQuery($sql);
     }

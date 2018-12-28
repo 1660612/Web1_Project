@@ -51,6 +51,8 @@ class InvoiceDAO extends DB
 
     public function Delete($invoice)
     {
+        $sql = "DELETE FROM invoice_items WHERE invoice_id = $invoice->id";
+        $this->ExecuteQuery($sql);
         $sql = "DELETE FROM invoices WHERE id = $invoice->id";
         $this->ExecuteQuery($sql);
     }

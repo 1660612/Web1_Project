@@ -53,6 +53,8 @@ class ManufacturerDAO extends DB
 
     public function Delete($manufacturer)
     {
+        $sql = "DELETE FROM products WHERE products.manufacturer_id = $manufacturer->id";
+        $this->ExecuteQuery($sql);
         $sql = "DELETE FROM manufacturers WHERE id = $manufacturer->id";
         $this->ExecuteQuery($sql);
     }

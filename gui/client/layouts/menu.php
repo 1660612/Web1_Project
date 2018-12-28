@@ -46,8 +46,5 @@ $manufacturers = (new ManufacturerBUS())->GetAll();
                 </div>
             </div>
         </div>
-        <div style="width: 20%;" class="d-block float-left">
-            <a href="./index.php?query=timkiemnangcao" class="btn btn-secondary" style="margin-top: 16px; height: 46px;">Tìm kiếm nâng cao</a>
-        </div>
     </div>
 </div>

@@ -64,7 +64,7 @@ if(isset($_POST['user_name']) && isset($_POST['email']))
             <div class='text-info'>Xin chào $check_user->full_name. Bạn đã yêu cầu lấy lại mật khẩu và đây là mật khẩu mới của bạn!</div>
             <p>Mật khẩu mới của bạn là: $pass</p>";
             $headers = 'From: system@shop.com';
-            $headers = 'Content-Type: text/html; charset=utf-8'." \r\n";
+            $headers = 'Content-Type: text/html; charset="UTF-8"'." \r\n";
             $mail_sent = mail($to, $subject, $message, $headers);
         }
     }

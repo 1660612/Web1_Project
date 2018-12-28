@@ -99,6 +99,10 @@ foreach(glob("../../BUS/*.php") as $filename)
                     {
                         include_once("./pages/manufacturers.php");
                     }
+                    else if($a == 7)
+                    {
+                        include_once("./pages/invoice_items.php");
+                    }
                 ?>
             </div>
             </div>

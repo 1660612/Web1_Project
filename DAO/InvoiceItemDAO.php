@@ -59,8 +59,33 @@ class InvoiceItemDAO extends DB
 
     public function Update($invoice_item)
     {
-        $sql = "UPDATE invoice_items SET quantity = $invoice_item->quantity, price = $invoice_item->price, product_id = $invoice_item->product_id, invoice_id = $invoice_item->invoice_id
-                WHERE id = $invoice_item->id";
-        $this->ExecuteQuery($sql);
+        if($invoice_item->quantity != '' && $invoice_item->quantity != null)
+        {
+            $sql = "UPDATE invoice_items SET quantity = $invoice_item->quantity WHERE id = $invoice_item->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($invoice_item->price != '' && $invoice_item->price != null)
+        {
+            $sql = "UPDATE invoice_items SET price = $invoice_item->price WHERE id = $invoice_item->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($invoice_item->product_id != '' && $invoice_item->product_id != null)
+        {
+            $sql = "UPDATE invoice_items SET product_id = $invoice_item->product_id WHERE id = $invoice_item->id";
+            $this->ExecuteQuery($sql);
+        }
+        if($invoice_item->invoice_id != '' && $invoice_item->invoice_id != null)
+        {
+            $sql = "UPDATE invoice_items SET invoice_id = $invoice_item->invoice_id WHERE id = $invoice_item->id";
+            $this->ExecuteQuery($sql);
+        }
+    }
+
+    public function GetProductName($id)
+    {
+        $sql = "select products.name from products, invoice_items WHERE invoice_items.id = $id AND products.id = invoice_items.product_id";
+        $result = $this->ExecuteQuery($sql);
+        $row=mysqli_fetch_array($result);
+        return $row[0];
     }
 }
